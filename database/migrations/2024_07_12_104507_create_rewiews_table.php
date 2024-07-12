@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rewiews', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('doctor_id')->index();
-            $table->id()->foreign('doctor_id')->references('id')->on('doctors')->cascadeOnDelete();
+            $table->foreign('doctor_id')->references('id')->on('doctors')->cascadeOnDelete();
             $table->string('guest_name');
             $table->string('guest_mail')->nullable();
             $table->text('rewiew');
