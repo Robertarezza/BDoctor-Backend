@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('guest_surname');
             $table->string('guest_mail');
             $table->text('message');
+            $table->timestamps();
         });
     }
 
