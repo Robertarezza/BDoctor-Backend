@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Doctor;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
@@ -12,7 +14,12 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        $userArray = User::all();
+        $doctorsArray = Doctor::all();
+        // dd($userArray);
+        // dd($doctorsArray);
+
+        return view('admin.doctors.index', compact('userArray', 'doctorsArray'));
     }
 
     /**
