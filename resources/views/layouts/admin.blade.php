@@ -72,7 +72,19 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.doctors.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.doctors.index') }}">
-                                    <i class="fa-solid fa-user-doctor"></i> Doctors
+                                    <i class="fa-solid fa-user-doctor"></i> Your Datas
+                                </a>
+                            </li>
+                        </ul>
+
+
+                    </div>
+                    <div class="position-sticky pt-3">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.doctors.create' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.doctors.create') }}">
+                                    <i class="fa-solid fa-user-doctor"></i> Create your profile
                                 </a>
                             </li>
                         </ul>
