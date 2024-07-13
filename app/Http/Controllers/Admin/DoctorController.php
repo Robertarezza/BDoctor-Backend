@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
+use App\Models\Specialization;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,10 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('admin.doctors.create');
+        $user = Auth::user();
+        $doctor = Doctor::where('user_id', $user->id)->first();
+        $specializations = Specialization::all();
+        return view('admin.doctors.create', compact('user', 'doctor', 'specializations'));
     }
 
     /**

@@ -7,7 +7,6 @@ return [
         'phone_number' => '123-456-7890',
         'studio_address' => '123 Main St, Cityville',
         'CV' => 'https://example.com/photos/doc12.jpg',
-        
     ],
     [
         'user_id' => '2',
