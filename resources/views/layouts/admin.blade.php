@@ -26,8 +26,7 @@
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
 
-    <!-- Includere il file CSS compilato -->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
