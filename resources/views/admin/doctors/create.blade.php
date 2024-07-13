@@ -38,10 +38,6 @@
             <label for="CV" class="form-label">Allega il tuo CV *</label>
             <input class="form-control" name="CV" type="file" id="CV">
         </div>
-        <div class="mb-3">
-            <label for="address" class="form-label">Indirizzo studio *</label>
-            <input type="text" name="studio_address" class="form-control" id="address">
-        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <script>
