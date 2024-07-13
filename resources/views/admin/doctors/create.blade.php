@@ -11,6 +11,22 @@
             <input class="form-control" name="photo" type="file" id="formFile">
         </div>
         <div class="mb-3">
+            <label for="specialization" class="form-label">Specializzazioni *</label>
+            <select name="specialization[]" id="specialization" class="form-control d-none" multiple>
+                @foreach ($specializations as $specialization)
+                    <option value="{{ $specialization->id }}">{{ $specialization->title }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="performance" class="form-label">Prestazioni *</label>
+            <select name="performance[]" id="performance" class="form-control d-none" multiple>
+                @foreach ($performances as $performance)
+                    <option value="{{ $performance }}">{{ $performance }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3">
             <label for="number" class="form-label">Numero di telefono *</label>
             <input type="number" name="phone_number" class="form-control" id="number">
         </div>
@@ -26,14 +42,36 @@
             <label for="address" class="form-label">Indirizzo studio *</label>
             <input type="text" name="studio_address" class="form-control" id="address">
         </div>
-        <div class="mb-3">
-            <label for="specialization" class="form-label">Prestazioni *</label>
-            <select name="specialization[]" id="specialization" class="form-control selectpicker" multiple="multiple">
-                @foreach ($specializations as $specialization)
-                    <option value="{{ $specialization->id }}">{{ $specialization->title }}</option>
-                @endforeach
-            </select>
-        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <script>
+        // https://github.com/habibmhamadi/multi-select-tag
+        new MultiSelectTag('specialization', {
+            rounded: true, // default true
+            shadow: false, // default false
+            placeholder: 'Search', // default Search...
+            tagColor: {
+                textColor: '#327b2c',
+                borderColor: '#92e681',
+                bgColor: '#eaffe6',
+            },
+            onChange: function(values) {
+                console.log(values)
+            }
+        });
+        new MultiSelectTag('performance', {
+            rounded: true, // default true
+            shadow: false, // default false
+            placeholder: 'Search', // default Search...
+            tagColor: {
+                textColor: '#327b2c',
+                borderColor: '#92e681',
+                bgColor: '#eaffe6',
+            },
+            onChange: function(values) {
+                console.log(values)
+            }
+        })
+
+    </script>
 @endsection

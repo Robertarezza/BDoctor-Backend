@@ -34,7 +34,8 @@ class DoctorController extends Controller
         $user = Auth::user();
         $doctor = Doctor::where('user_id', $user->id)->first();
         $specializations = Specialization::all();
-        return view('admin.doctors.create', compact('user', 'doctor', 'specializations'));
+        $performances = config('performance');
+        return view('admin.doctors.create', compact('user', 'doctor', 'specializations', 'performances'));
     }
 
     /**
