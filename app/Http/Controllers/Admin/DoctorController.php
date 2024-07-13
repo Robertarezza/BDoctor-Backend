@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorController extends Controller
 {
@@ -14,12 +15,14 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $userArray = User::all();
-        $doctorsArray = Doctor::all();
+        $user = Auth::user();
+        $doctor = Doctor::where('user_id', $user->id)->first();
+        //$userArray = User::all();
+        //$doctorsArray = Doctor::all();
         // dd($userArray);
         // dd($doctorsArray);
 
-        return view('admin.doctors.index', compact('userArray', 'doctorsArray'));
+        return view('admin.doctors.index', compact('user', 'doctor'));
     }
 
     /**
