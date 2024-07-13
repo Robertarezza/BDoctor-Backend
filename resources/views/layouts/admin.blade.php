@@ -25,6 +25,9 @@
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
+
+    <!-- Includere il file CSS compilato -->
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -53,7 +56,7 @@
             </div>
         </header>
 
-        <div class="container-fluid">
+        <div class="container-fluid flex-1">
             <div class="row h-100">
                 <!-- Definire solo parte del menu di navigazione inizialmente per poi
         aggiungere i link necessari giorno per giorno
@@ -97,11 +100,15 @@
                     </div>
                 </nav>
 
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 content">
                     @yield('content')
                 </main>
             </div>
         </div>
+
+        <footer class="footer text-center">
+            <p>&copy; 2024 BoolPress. All Rights Reserved.</p>
+        </footer>
 
     </div>
 </body>
