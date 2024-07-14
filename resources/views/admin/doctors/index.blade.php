@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Doctor Profile</h1>
+        <h1 class="text-center">I tuoi dati</h1>
         @if ($doctor)
             <img class="doctor-photo" src=" {{ asset('storage/' . $doctor->photo) }}" alt="">
 

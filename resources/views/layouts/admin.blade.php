@@ -66,7 +66,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
-                                    <i class="fa-solid fa-table-columns"></i> Dashboard
+                                    <i class="fa-solid fa-table-columns"></i> Homepage
                                 </a>
                             </li>
                         </ul>
@@ -78,7 +78,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.doctors.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.doctors.index') }}">
-                                    <i class="fa-solid fa-user-doctor"></i> Your Datas
+                                    <i class="fa-solid fa-user-doctor"></i> I tuoi dati
                                 </a>
                             </li>
                         </ul>
@@ -90,7 +90,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.doctors.create' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.doctors.create') }}">
-                                    <i class="fa-solid fa-user-doctor"></i> Create your profile
+                                    <i class="fa-solid fa-user-doctor"></i> Crea il tuo profilo
                                 </a>
                             </li>
                         </ul>
