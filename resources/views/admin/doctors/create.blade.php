@@ -3,10 +3,13 @@
 @section('content')
     <h1 class="text-center m-5">Crea il tuo profilo</h1>
     
+    {{-- CONTAINER --}}
     <div class="container">
+        {{-- FORM --}}
         <form action="{{ route('admin.doctors.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
+            {{-- PHOTO --}}
             <div class="mb-3">
                 <label for="photo" class="form-label">Inserisci una foto *</label>
                 <input name="photo" type="file" id="photo" class="form-control @error('photo') is-invalid @enderror">
@@ -16,9 +19,15 @@
                     </span>
                 @enderror
             </div>
+            {{-- /PHOTO --}}
+
+            {{-- PHOTO PREVIEW --}}
             <div class="mb-3">
                 <img class="d-none doctor-photo" id="photo-preview" src="" alt="">
             </div>
+            {{-- PHOTO PREVIEW --}}
+
+            {{-- SPECIALIZATIONS --}}
             <div class="mb-3">
                 <label for="specialization" class="form-label">Specializzazioni *</label>
                 <select name="specialization[]" id="specialization"
@@ -33,6 +42,9 @@
                     </span>
                 @enderror
             </div>
+            {{-- /SPECIALIZATIONS --}}
+
+            {{-- PERFORMANCES --}}
             <div class="mb-3">
                 <label for="performance" class="form-label">Prestazioni *</label>
                 <select name="performance[]" id="performance"
@@ -47,6 +59,9 @@
                     </span>
                 @enderror
             </div>
+            {{-- /PERFORMANCES --}}
+
+            {{-- PHONE NUMBER --}}
             <div class="mb-3">
                 <label for="phone_number" class="form-label">Numero di telefono *</label>
                 <input type="tel" name="phone_number" id="phone_number"
@@ -57,6 +72,9 @@
                     </span>
                 @enderror
             </div>
+            {{-- /PHONE NUMBER  --}}
+
+            {{-- STUDIO ADDRESS --}}
             <div class="mb-3">
                 <label for="studio_address" class="form-label">Indirizzo studio *</label>
                 <input type="text" name="studio_address" id="studio_address"
@@ -67,6 +85,9 @@
                     </span>
                 @enderror
             </div>
+            {{-- /STUDIO ADDRESS --}}
+
+            {{-- CV --}}
             <div class="mb-3">
                 <label for="CV" class="form-label">Allega il tuo CV *</label>
                 <input name="CV" type="file" id="CV" class="form-control @error('CV') is-invalid @enderror">
@@ -76,12 +97,21 @@
                     </span>
                 @enderror
             </div>
+            {{-- /CV --}}
+
+            {{-- CV PREVIEW --}}
             <div class="mb-3">
                 <img class="d-none doctor-cv" id="cv-preview" src="" alt="">
             </div>
+            {{-- /CV PREVIEW --}}
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        {{-- FORM --}}
     </div>
+    {{-- /CONTAINER --}}
+
+    {{-- SCRIPT FOR MULTISELECT --}}
     <script>
         // https://github.com/habibmhamadi/multi-select-tag
         new MultiSelectTag('specialization', {
@@ -111,4 +141,5 @@
             }
         })
     </script>
+    {{-- /SCRIPT FOR MULTISELECT --}}
 @endsection

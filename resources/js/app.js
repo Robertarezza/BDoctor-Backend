@@ -59,6 +59,8 @@ if (photoInput && photoPrewiewElem) {
 
 //PHOTO PREVIEW 
 
+// --------------------------------------------------------------------------------------------------------------------------------------
+
 //CV PREVIEW 
 
 // troviamo il pulsante per il caricamento dell' immagine e il riquadro della preview
