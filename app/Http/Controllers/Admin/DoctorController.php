@@ -9,6 +9,7 @@ use App\Models\Specialization;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class DoctorController extends Controller
 {
@@ -45,6 +46,18 @@ class DoctorController extends Controller
     public function store(Request $request)
     {
         $doctors = $request->all();
+
+        if($request->hasFile('photo')) {
+            $photo_path = Storage::put('photo', $request->photo);
+
+            $doctors['photo'] = $photo_path;
+        }
+        if($request->hasFile('CV')) {
+            $cv_path = Storage::put('cv', $request->CV);
+
+            $doctors['CV'] = $cv_path;
+        }
+
         $newDoctor = new Doctor();
         $newDoctor->user_id = Auth::id();
         $newDoctor->fill($doctors);
@@ -55,8 +68,8 @@ class DoctorController extends Controller
         if ($request->has('performance')) {
             $newDoctor->performances()->attach($request->performance);
         }
-
-        // dd($request);
+        
+        // dd($request->all());
 
         return redirect()->route('admin.doctors.index', ['doctor' => $newDoctor->id]);
     }

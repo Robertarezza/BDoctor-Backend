@@ -3,12 +3,12 @@
 @section('content')
     <h1 class="text-center m-5">Create your profile</h1>
 
-    <form action="{{ route('admin.doctors.store') }}" method="POST">
+    <form action="{{ route('admin.doctors.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
-            <label for="formFile" class="form-label">Inserisci una foto *</label>
-            <input class="form-control" name="photo" type="file" id="formFile">
+            <label for="photo" class="form-label">Inserisci una foto *</label>
+            <input class="form-control" name="photo" type="file" id="photo">
         </div>
         <div class="mb-3">
             <label for="specialization" class="form-label">Specializzazioni *</label>

@@ -4,6 +4,8 @@
     <div class="container">
         <h1>Doctor Profile</h1>
         @if ($doctor)
+            <img src=" {{ asset('storage/' . $doctor->photo) }}" alt="">
+
             <table class="table">
                 {{-- <tr>
                     <th>ID</th>
@@ -46,9 +48,13 @@
                         @endforelse
                     </td>
                 </tr>
-                <th>foto</th>
-                <img src="{{ $doctor->photo }}" alt="foto">
 
+                <tr>
+                    <th>CV</th>
+                    <td>
+                        <img src=" {{ asset('storage/' . $doctor->CV) }}" alt="">
+                    </td>
+                </tr>
             </table>
         @else
             <p>No doctor profile found for the logged in user.</p>
