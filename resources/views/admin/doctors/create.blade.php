@@ -20,9 +20,9 @@
         </div>
         <div class="mb-3">
             <label for="performance" class="form-label">Prestazioni *</label>
-            <select name="performance" id="performance" class="form-control">
+            <select name="performance[]" id="performance" class="form-control d-none" multiple>
                 @foreach ($performances as $performance)
-                    <option value="{{ $performance }}">{{ $performance }}</option>
+                    <option value="{{ $performance->id }}">{{ $performance->title }}</option>
                 @endforeach
             </select>
         </div>
@@ -55,19 +55,19 @@
                 console.log(values)
             }
         });
-        // new MultiSelectTag('performance', {
-        //     rounded: true, // default true
-        //     shadow: false, // default false
-        //     placeholder: 'Search', // default Search...
-        //     tagColor: {
-        //         textColor: '#327b2c',
-        //         borderColor: '#92e681',
-        //         bgColor: '#eaffe6',
-        //     },
-        //     onChange: function(values) {
-        //         console.log(values)
-        //     }
-        // })
+        new MultiSelectTag('performance', {
+            rounded: true, // default true
+            shadow: false, // default false
+            placeholder: 'Search', // default Search...
+            tagColor: {
+                textColor: '#327b2c',
+                borderColor: '#92e681',
+                bgColor: '#eaffe6',
+            },
+            onChange: function(values) {
+                console.log(values)
+            }
+        })
 
     </script>
 @endsection

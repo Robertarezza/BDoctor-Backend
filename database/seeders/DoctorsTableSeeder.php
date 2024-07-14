@@ -15,11 +15,9 @@ class DoctorsTableSeeder extends Seeder
     public function run(Faker $faker): void
     {
         $doctors = config('doctors');
-        $performance = config('performance');
         foreach ($doctors as $doctor) {
             $newDoctor = new Doctor();
             $newDoctor->fill($doctor);
-            $newDoctor->performance = $faker->randomElement($performance);
             $newDoctor->save();
         }
     }

@@ -5,10 +5,10 @@
         <h1>Doctor Profile</h1>
         @if ($doctor)
             <table class="table">
-                <tr>
+                {{-- <tr>
                     <th>ID</th>
                     <td>{{ $doctor->id }}</td>
-                </tr>
+                </tr> --}}
                 <tr>
                     <th>Nome</th>
                     <td>{{ $user->name }}</td>
@@ -28,7 +28,13 @@
                 </tr>
                 <tr>
                     <th>Prestazioni</th>
-                    <td>{{ $doctor->performance }}</td>
+                    <td>
+                        @forelse ($doctor->performances as $performance)
+                            {{ $performance->title }}
+                        @empty
+                            nessuna specializzazione selezionata
+                        @endforelse
+                    </td>
                 </tr>
                 <tr>
                     <th>Specializzazioni</th>

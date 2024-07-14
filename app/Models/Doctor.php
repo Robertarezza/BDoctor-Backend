@@ -9,7 +9,7 @@ class Doctor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['photo', 'phone_number', 'studio_address', 'CV', 'performance'];
+    protected $fillable = ['photo', 'phone_number', 'studio_address', 'CV'];
 
     public function user() {
         return $this->belongsTo(User::class);
@@ -17,5 +17,9 @@ class Doctor extends Model
 
     public function specializations() {
         return $this->belongsToMany(Specialization::class);
+    }
+
+    public function performances() {
+        return $this->belongsToMany(Performance::class);
     }
 }
