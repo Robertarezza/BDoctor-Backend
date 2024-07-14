@@ -11,6 +11,9 @@
             <input class="form-control" name="photo" type="file" id="photo">
         </div>
         <div class="mb-3">
+            <img class="d-none" id="photo-preview" src="" alt="">
+        </div>
+        <div class="mb-3">
             <label for="specialization" class="form-label">Specializzazioni *</label>
             <select name="specialization[]" id="specialization" class="form-control d-none" multiple>
                 @foreach ($specializations as $specialization)
@@ -37,6 +40,9 @@
         <div class="mb-3">
             <label for="CV" class="form-label">Allega il tuo CV *</label>
             <input class="form-control" name="CV" type="file" id="CV">
+        </div>
+        <div class="mb-3">
+            <img class="d-none" id="cv-preview" src="" alt="">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
