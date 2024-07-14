@@ -75,6 +75,8 @@ body {
     border-color: #0056b3;
 }
 
+
+//classi per il ridimensionamento delle foto del cv e della foto profilo -- vedi index.blade.php (photo/CV) e create.index.php (photo/CV preview)
 .doctor-photo, .doctor-cv {
     width: 200px;
     height: 200px;
