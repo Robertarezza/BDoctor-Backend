@@ -3,6 +3,7 @@
 @section('content')
     <h1 class="text-center m-5">Crea il tuo profilo</h1>
 
+    @include('partials.errors')
     <form action="{{ route('admin.doctors.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
