@@ -10,7 +10,7 @@
                     <td>{{ $doctor->id }}</td>
                 </tr>
                 <tr>
-                    <th>name</th>
+                    <th>Nome</th>
                     <td>{{ $user->name }}</td>
                 </tr>
                 <tr>
@@ -23,12 +23,22 @@
                     <td>{{ $doctor->phone_number }}</td>
                 </tr>
                 <tr>
-                    <th>Cognome</th>
+                    <th>Indirizzo dello studio</th>
                     <td>{{ $doctor->studio_address }}</td>
                 </tr>
                 <tr>
-                    <th>Cognome</th>
+                    <th>Prestazioni</th>
                     <td>{{ $doctor->performance }}</td>
+                </tr>
+                <tr>
+                    <th>Specializzazioni</th>
+                    <td>
+                        @forelse ($doctor->specializations as $specialization)
+                            {{ $specialization->title }}
+                        @empty
+                            nessuna specializzazione selezionata
+                        @endforelse
+                    </td>
                 </tr>
                 <th>foto</th>
                 <img src="{{ $doctor->photo }}" alt="foto">

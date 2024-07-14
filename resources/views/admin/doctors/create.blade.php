@@ -20,19 +20,19 @@
         </div>
         <div class="mb-3">
             <label for="performance" class="form-label">Prestazioni *</label>
-            <select name="performance[]" id="performance" class="form-control d-none" multiple>
+            <select name="performance" id="performance" class="form-control">
                 @foreach ($performances as $performance)
                     <option value="{{ $performance }}">{{ $performance }}</option>
                 @endforeach
             </select>
         </div>
         <div class="mb-3">
-            <label for="number" class="form-label">Numero di telefono *</label>
-            <input type="number" name="phone_number" class="form-control" id="number">
+            <label for="phone_number" class="form-label">Numero di telefono *</label>
+            <input type="number" name="phone_number" class="form-control" id="phone_number">
         </div>
         <div class="mb-3">
-            <label for="address" class="form-label">Indirizzo studio *</label>
-            <input type="text" name="studio_address" class="form-control" id="address">
+            <label for="studio_address" class="form-label">Indirizzo studio *</label>
+            <input type="text" name="studio_address" class="form-control" id="studio_address">
         </div>
         <div class="mb-3">
             <label for="CV" class="form-label">Allega il tuo CV *</label>
@@ -55,19 +55,19 @@
                 console.log(values)
             }
         });
-        new MultiSelectTag('performance', {
-            rounded: true, // default true
-            shadow: false, // default false
-            placeholder: 'Search', // default Search...
-            tagColor: {
-                textColor: '#327b2c',
-                borderColor: '#92e681',
-                bgColor: '#eaffe6',
-            },
-            onChange: function(values) {
-                console.log(values)
-            }
-        })
+        // new MultiSelectTag('performance', {
+        //     rounded: true, // default true
+        //     shadow: false, // default false
+        //     placeholder: 'Search', // default Search...
+        //     tagColor: {
+        //         textColor: '#327b2c',
+        //         borderColor: '#92e681',
+        //         bgColor: '#eaffe6',
+        //     },
+        //     onChange: function(values) {
+        //         console.log(values)
+        //     }
+        // })
 
     </script>
 @endsection

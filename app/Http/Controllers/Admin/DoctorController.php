@@ -43,7 +43,19 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $doctors = $request->all();
+        $newDoctor = new Doctor();
+        $newDoctor->user_id = Auth::id();
+        $newDoctor->fill($doctors);
+        $newDoctor->save();
+        if ($request->has('specialization')) {
+            $newDoctor->specializations()->attach($request->specialization);
+        }
+
+
+        // dd($request);
+
+        return redirect()->route('admin.doctors.index', ['doctor' => $newDoctor->id]);
     }
 
     /**
