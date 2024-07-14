@@ -12,7 +12,7 @@
             {{-- PHOTO --}}
             <div class="mb-3">
                 <label for="photo" class="form-label">Inserisci una foto *</label>
-                <input name="photo" type="file" id="photo" class="form-control @error('photo') is-invalid @enderror">
+                <input name="photo" type="file" id="photo" class="form-control @error('photo') is-invalid @enderror" value="{{ old('photo') }}">
                 @error('photo')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -33,7 +33,7 @@
                 <select name="specialization[]" id="specialization"
                     class="form-control @error('specialization') is-invalid @enderror d-none" multiple>
                     @foreach ($specializations as $specialization)
-                        <option value="{{ $specialization->id }}">{{ $specialization->title }}</option>
+                        <option @selected(in_array($specialization->id, old('specialization', [])))  value="{{ $specialization->id }}">{{ $specialization->title }}</option>
                     @endforeach
                 </select>
                 @error('specialization')
@@ -50,7 +50,7 @@
                 <select name="performance[]" id="performance"
                     class="form-control @error('performance') is-invalid @enderror d-none" multiple>
                     @foreach ($performances as $performance)
-                        <option value="{{ $performance->id }}">{{ $performance->title }}</option>
+                        <option @selected(in_array($performance->id, old('performance', []))) value="{{ $performance->id }}">{{ $performance->title }}</option>
                     @endforeach
                 </select>
                 @error('performance')
@@ -65,7 +65,7 @@
             <div class="mb-3">
                 <label for="phone_number" class="form-label">Numero di telefono *</label>
                 <input type="tel" name="phone_number" id="phone_number"
-                    class="form-control @error('phone_number') is-invalid @enderror">
+                    class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}">
                 @error('phone_number')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -78,7 +78,7 @@
             <div class="mb-3">
                 <label for="studio_address" class="form-label">Indirizzo studio *</label>
                 <input type="text" name="studio_address" id="studio_address"
-                    class="form-control @error('studio_address') is-invalid @enderror">
+                    class="form-control @error('studio_address') is-invalid @enderror" value="{{ old('studio_address') }}">
                 @error('studio_address')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
