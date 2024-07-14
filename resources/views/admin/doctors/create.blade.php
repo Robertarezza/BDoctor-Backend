@@ -11,7 +11,7 @@
             <input class="form-control" name="photo" type="file" id="photo">
         </div>
         <div class="mb-3">
-            <img class="d-none" id="photo-preview" src="" alt="">
+            <img class="d-none doctor-photo" id="photo-preview" src="" alt="">
         </div>
         <div class="mb-3">
             <label for="specialization" class="form-label">Specializzazioni *</label>
@@ -42,7 +42,7 @@
             <input class="form-control" name="CV" type="file" id="CV">
         </div>
         <div class="mb-3">
-            <img class="d-none" id="cv-preview" src="" alt="">
+            <img class="d-none doctor-cv" id="cv-preview" src="" alt="">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

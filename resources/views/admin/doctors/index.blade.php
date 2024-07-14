@@ -4,7 +4,7 @@
     <div class="container">
         <h1>Doctor Profile</h1>
         @if ($doctor)
-            <img src=" {{ asset('storage/' . $doctor->photo) }}" alt="">
+            <img class="doctor-photo" src=" {{ asset('storage/' . $doctor->photo) }}" alt="">
 
             <table class="table">
                 {{-- <tr>
@@ -52,7 +52,7 @@
                 <tr>
                     <th>CV</th>
                     <td>
-                        <img src=" {{ asset('storage/' . $doctor->CV) }}" alt="">
+                        <img class="doctor-cv" src=" {{ asset('storage/' . $doctor->CV) }}" alt="">
                     </td>
                 </tr>
             </table>
