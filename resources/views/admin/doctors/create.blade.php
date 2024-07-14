@@ -49,7 +49,7 @@
             </div>
             <div class="mb-3">
                 <label for="phone_number" class="form-label">Numero di telefono *</label>
-                <input type="number" name="phone_number" id="phone_number"
+                <input type="tel" name="phone_number" id="phone_number"
                     class="form-control @error('phone_number') is-invalid @enderror">
                 @error('phone_number')
                     <span class="invalid-feedback" role="alert">
