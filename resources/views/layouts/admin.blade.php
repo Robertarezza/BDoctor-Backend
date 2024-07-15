@@ -29,7 +29,7 @@
     <div id="app">
         <header class="navbar navbar-dark sticky-top custom-navbar flex-md-nowrap p-2 shadow px-4">
             <div class="row justify-content-between">
-                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">BoolPress</a>
+                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">Dashboard D-Doctors</a>
                 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -71,7 +71,12 @@
                             </li>
                         </ul>
                     </div>
+<<<<<<< HEAD
                     <div class="position-sticky pt-3">
+=======
+
+                    {{-- <div class="position-sticky pt-3">
+>>>>>>> 4169199b2b9e3c2e5171bbe5b0aace1ba9dd874a
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.doctors.create' ? 'active' : '' }}"
@@ -80,7 +85,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </nav>
 
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 content">
