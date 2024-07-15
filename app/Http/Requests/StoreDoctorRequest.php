@@ -22,12 +22,12 @@ class StoreDoctorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'photo' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'photo' => ['required', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'specialization' => ['required'],
             'performance' => ['required'],
             'phone_number' => ['required', 'string', 'max:15'],
             'studio_address' => ['required', 'string', 'max:255'],
-            'CV' => ['required', 'file', 'mimes:pdf,doc,docx', 'max:10240'],
+            'CV' => ['required', 'mimes:pdf,doc,docx', 'max:10240'],
         ];
     }
 
@@ -40,7 +40,6 @@ class StoreDoctorRequest extends FormRequest
     {
         return [
             'photo.required' => 'Si perga di inserire la foto',
-            'photo.image' => 'Il file deve essere un\'immagine',
             'photo.mimes' => 'La foto deve essere in formato jpeg, png, jpg, gif o svg',
             'photo.max' => 'La foto non deve superare i 2048KB',
             'specialization.required' => 'Si perga di inserire almeno una specializzazione',
@@ -49,7 +48,6 @@ class StoreDoctorRequest extends FormRequest
             'phone_number.max' => 'Il numero telefonico non deve superare i 15 caratteri',
             'studio_address.max' => 'L\'indirizzo dello studio non deve superare i 255 caratteri',
             'CV.required' => 'Si prega di inserire il CV',
-            'CV.file' => 'Il CV deve essere un file',
             'CV.mimes' => 'Il CV deve essere in formato pdf, doc o docx',
             'CV.max' => 'Il CV non deve superare i 10240KB',
         ];
