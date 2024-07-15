@@ -122,8 +122,9 @@ class DoctorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Doctor $doctor, User $user)
     {
-        //
+        $doctor->delete();
+        return redirect()->route('admin.doctors.create')->with('message', 'Il tuo profilo è stato eliminato correttamente');
     }
 }
