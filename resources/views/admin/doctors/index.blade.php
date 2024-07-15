@@ -84,7 +84,7 @@
                 <tr>
                     <th>CV</th>
                     <td>
-                        <img class="doctor-cv" src=" {{ asset('storage/' . $doctor->CV) }}" alt="">
+                        <embed class="doctor-cv" src=" {{ asset('storage/' . $doctor->CV) }}" alt="">
                     </td>
                 </tr>
                 {{-- /CV --}}
