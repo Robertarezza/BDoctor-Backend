@@ -77,9 +77,8 @@
                             </li>
                         </ul>
                     </div>
-                  
 
-                    <div class="position-sticky pt-3">
+                    {{-- <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.doctors.create' ? 'active' : '' }}"
@@ -88,7 +87,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </nav>
 
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 content">
