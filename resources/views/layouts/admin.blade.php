@@ -71,12 +71,9 @@
                             </li>
                         </ul>
                     </div>
-<<<<<<< HEAD
                     <div class="position-sticky pt-3">
-=======
 
                     {{-- <div class="position-sticky pt-3">
->>>>>>> 4169199b2b9e3c2e5171bbe5b0aace1ba9dd874a
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.doctors.create' ? 'active' : '' }}"
