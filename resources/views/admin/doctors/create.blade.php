@@ -101,7 +101,7 @@
 
             {{-- CV PREVIEW --}}
             <div class="mb-3">
-                <img class="d-none doctor-cv" id="cv-preview" src="" alt="">
+                <embed class="d-none doctor-cv" id="cv-preview" src="" alt="">
             </div>
             {{-- /CV PREVIEW --}}
 
