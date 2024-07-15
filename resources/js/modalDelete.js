@@ -17,7 +17,7 @@ openModalDelete.addEventListener('click', function() {
     const modalDelete = $one('.ms-modal-delete');
     modalDelete.classList.remove('d-none');
     // modalDelete.classList.add('bg-secondary');
-    modalDelete.classList.add('ms-modal');
+    modalDelete.classList.add('ms-modal'); //custom class per il modale e l'effetto ease-in 
 
     const container = $one('.ms-container-index');
     container.classList.add('opacity-25');
