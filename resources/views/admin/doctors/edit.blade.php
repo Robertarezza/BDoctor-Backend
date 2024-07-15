@@ -103,9 +103,8 @@
 
             {{-- CV PREVIEW --}}
             <div class="mb-3">
-                <object class="{{ $doctor->CV ? '' : 'd-none' }} doctor-cv" id="cv-preview" data="{{ $doctor->CV ? asset('storage/' . $doctor->CV) : '' }}" type="application/pdf" width="100%" height="500px">
-                    <p>Il tuo browser non supporta la visualizzazione dei file PDF. <a href="{{ $doctor->CV ? asset('storage/' . $doctor->CV) : '' }}">Scarica il CV</a>.</p>
-                </object>
+                <embed class="{{ $doctor->CV ? '' : 'd-none' }} doctor-cv" id="cv-preview" data="{{ $doctor->CV ? asset('storage/' . $doctor->CV) : '' }}" type="" >
+                   
             </div>
             {{-- /CV PREVIEW --}}
 
@@ -150,23 +149,5 @@
     </script>
     {{-- /SCRIPT FOR MULTISELECT --}}
 
-    {{-- SCRIPT FOR IMAGE PREVIEW --}}
-    <script>
-        document.getElementById('photo').addEventListener('change', function(event) {
-            const [file] = event.target.files;
-            if (file) {
-                document.getElementById('photo-preview').classList.remove('d-none');
-                document.getElementById('photo-preview').src = URL.createObjectURL(file);
-            }
-        });
-
-        document.getElementById('CV').addEventListener('change', function(event) {
-            const [file] = event.target.files;
-            if (file) {
-                document.getElementById('cv-preview').classList.remove('d-none');
-                document.getElementById('cv-preview').data = URL.createObjectURL(file);
-            }
-        });
-    </script>
-    {{-- /SCRIPT FOR IMAGE PREVIEW --}}
+   
 @endsection
