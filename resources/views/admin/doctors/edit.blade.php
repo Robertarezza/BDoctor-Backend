@@ -13,7 +13,7 @@
 
         {{-- PHOTO --}}
         <div class="mb-3">
-            <label for="photo" class="form-label">Inserisci una foto *</label>
+            <label for="photo" class="form-label text-info">Inserisci una foto *</label>
             <input name="photo" type="file" id="photo" class="form-control @error('photo') is-invalid @enderror" >
             @error('photo')
             <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
 
         {{-- SPECIALIZATIONS --}}
         <div class="mb-3">
-            <label for="specialization" class="form-label">Specializzazioni *</label>
+            <label for="specialization" class="form-label text-info">Specializzazioni *</label>
             <select name="specialization[]" id="specialization" class="form-control @error('specialization') is-invalid @enderror d-none" multiple>
                 @foreach ($specializations as $specialization)
                 <option @selected(in_array($specialization->id, old('specialization', $doctor->specializations->pluck('id')->toArray()))) value="{{ $specialization->id }}">{{ $specialization->title }}</option>
@@ -51,7 +51,7 @@
 
         {{-- PERFORMANCES --}}
         <div class="mb-3">
-            <label for="performance" class="form-label">Prestazioni *</label>
+            <label for="performance" class="form-label text-info">Prestazioni *</label>
             <select name="performance[]" id="performance" class="form-control @error('performance') is-invalid @enderror d-none" multiple>
                 @foreach ($performances as $performance)
                 <option @selected(in_array($performance->id, old('performance', $doctor->performances->pluck('id')->toArray()))) value="{{ $performance->id }}">{{ $performance->title }}</option>
@@ -67,7 +67,7 @@
 
         {{-- PHONE NUMBER --}}
         <div class="mb-3">
-            <label for="phone_number" class="form-label">Numero di telefono *</label>
+            <label for="phone_number" class="form-label text-info">Numero di telefono *</label>
             <input type="tel" name="phone_number" id="phone_number" class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number', $doctor->phone_number) }}">
             @error('phone_number')
             <span class="invalid-feedback" role="alert">
@@ -79,7 +79,7 @@
 
         {{-- STUDIO ADDRESS --}}
         <div class="mb-3">
-            <label for="studio_address" class="form-label">Indirizzo studio *</label>
+            <label for="studio_address" class="form-label text-info">Indirizzo studio *</label>
             <input type="text" name="studio_address" id="studio_address" class="form-control @error('studio_address') is-invalid @enderror" value="{{ old('studio_address', $doctor->studio_address) }}">
             @error('studio_address')
             <span class="invalid-feedback" role="alert">
@@ -91,7 +91,7 @@
 
         {{-- CV --}}
         <div class="mb-3">
-            <label for="CV" class="form-label">Allega il tuo CV *</label>
+            <label for="CV" class="form-label text-info">Allega il tuo CV *</label>
             <input name="CV" type="file" id="CV" class="form-control @error('CV') is-invalid @enderror">
             @error('CV')
             <span class="invalid-feedback" role="alert">

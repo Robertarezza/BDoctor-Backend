@@ -63,56 +63,64 @@ if (photoInput && photoPrewiewElem) {
 
 //CV PREVIEW 
 
-// troviamo il pulsante per il caricamento dell' immagine e il riquadro della preview
+// Troviamo il pulsante per il caricamento del file e il riquadro della preview
 const cvInput = document.getElementById('CV');
-const cvPrewiewElem = document.getElementById('cv-preview');
+const cvPreviewElem = document.getElementById('cv-preview');
 
-// con l'if restringiamo la visualizzazione solo nelle pagine in cui sono presenti gli elementi
-if (cvInput && cvPrewiewElem) {
-    // verifico in console se prendo gli elementi in modo corretto
-    // console.log(imageInput, imagePrewiewElem);
+// Con l'if restringiamo la visualizzazione solo nelle pagine in cui sono presenti gli elementi
+if (cvInput && cvPreviewElem) {
+    // Verifico in console se prendo gli elementi in modo corretto
+    console.log(cvInput, cvPreviewElem);
 
-    // verifico il cambio del valore nell' input
+    // Verifico il cambio del valore nell'input
     cvInput.addEventListener('change', function(){
-        // verifico in console
-        // console.log('input change');
+        // Verifico in console
+        console.log('input change');
 
-        // prelevo il valore dell'input
+        // Prelevo il valore dell'input
         const cvFiles = cvInput.files;
-        // verifico in console
-        // console.log(photoFiles);
+        // Verifico in console
+        console.log(cvFiles);
 
-        // se nell'input c'è un file
+        // Se nell'input c'è un file
         if(cvFiles && cvFiles.length > 0) {
-            // verifico in console
-            // console.log('file trovato', photoFiles[0]);
+            // Verifico in console
+            console.log('file trovato', cvFiles[0]);
 
-            // prelevo l'URL del file
-            const cvUrl = URL.createObjectURL(cvFiles[0]);
-            // verifico in console
-            // console.log(photoUrl);
+            // Verifico che il file sia un PDF
+            if (cvFiles[0].type === 'application/pdf') {
+                // Prelevo l'URL del file
+                const cvUrl = URL.createObjectURL(cvFiles[0]);
+                // Verifico in console
+                console.log(cvUrl);
 
-            //inseriamo nel src l'URL del file appena estrapolato
-            cvPrewiewElem.src = cvUrl;
+                // Inserisco nel src l'URL del file appena estrapolato
+                cvPreviewElem.src = cvUrl;
 
-            //mostro l'immagine
-            cvPrewiewElem.classList.remove('d-none');
+                // Mostro l'embed
+                cvPreviewElem.classList.remove('d-none');
 
-            //una volta che la preview viene visualizzata rilasciamo la memoria dal processo di lettura dell' immagine
-            cvPrewiewElem.onload = () =>
-                URL.revokeObjectURL(cvPrewiewElem.src);
+                // Una volta che la preview viene visualizzata, rilascio la memoria dal processo di lettura del file
+                cvPreviewElem.onload = () =>
+                    URL.revokeObjectURL(cvPreviewElem.src);
+            } else {
+                console.log('Il file selezionato non è un PDF');
+                // Nascondo l'embed
+                cvPreviewElem.classList.add('d-none');
+            }
         } else {
-            // verifico in console
-            // console.log('nessun file selezionato');
+            // Verifico in console
+            console.log('nessun file selezionato');
 
-            // tolgo URL dell'elemento image
-            cvPrewiewElem.src = "";
+            // Tolgo URL dell'elemento embed
+            cvPreviewElem.src = "";
 
-            //nascondo l'immagine
-            cvPrewiewElem.classList.add('d-none');
+            // Nascondo l'embed
+            cvPreviewElem.classList.add('d-none');
         }
-    })
+    });
 }
+
 //CV PREVIEW 
 
 

@@ -6,7 +6,7 @@
     <div class="container ms-container-index">
 
         {{-- DOCTOR INFOS --}}
-        <h1 class="text-center mb-5">I tuoi dati</h1>
+        <h1 class="text-center mb-5">Il tuo profilo</h1>
         @if ($doctor)
             <div class="row">
                 {{-- photo --}}
