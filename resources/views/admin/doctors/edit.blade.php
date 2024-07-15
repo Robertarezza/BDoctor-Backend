@@ -103,9 +103,8 @@
 
             {{-- CV PREVIEW --}}
             <div class="mb-3">
-                <object class="{{ $doctor->CV ? '' : 'd-none' }} doctor-cv" id="cv-preview" data="{{ $doctor->CV ? asset('storage/' . $doctor->CV) : '' }}" type="application/pdf" width="100%" height="500px">
-                    <p>Il tuo browser non supporta la visualizzazione dei file PDF. <a href="{{ $doctor->CV ? asset('storage/' . $doctor->CV) : '' }}">Scarica il CV</a>.</p>
-                </object>
+                <embed class="{{ $doctor->CV ? '' : 'd-none' }} doctor-cv" id="cv-preview" data="{{ $doctor->CV ? asset('storage/' . $doctor->CV) : '' }}" type="" >
+                   
             </div>
             {{-- /CV PREVIEW --}}
 
