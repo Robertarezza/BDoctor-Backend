@@ -14,7 +14,7 @@
                             </div>
                         @endif
 
-                        <h1>Bentornato! {{ $user->name }}</h1>
+                        <h1>Benvenuto! Dr. {{ $user->name }} {{ $user->surname }}</h1>
                     </div>
                 </div>
             </div>
