@@ -149,23 +149,5 @@
     </script>
     {{-- /SCRIPT FOR MULTISELECT --}}
 
-    {{-- SCRIPT FOR IMAGE PREVIEW --}}
-    <script>
-        document.getElementById('photo').addEventListener('change', function(event) {
-            const [file] = event.target.files;
-            if (file) {
-                document.getElementById('photo-preview').classList.remove('d-none');
-                document.getElementById('photo-preview').src = URL.createObjectURL(file);
-            }
-        });
-
-        document.getElementById('CV').addEventListener('change', function(event) {
-            const [file] = event.target.files;
-            if (file) {
-                document.getElementById('cv-preview').classList.remove('d-none');
-                document.getElementById('cv-preview').data = URL.createObjectURL(file);
-            }
-        });
-    </script>
-    {{-- /SCRIPT FOR IMAGE PREVIEW --}}
+   
 @endsection
