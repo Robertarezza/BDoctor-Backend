@@ -1,40 +1,42 @@
-
-
 body {
     background-color: #f4f4f9;
     color: #333;
 }
 
-.navbar {
-    background-color: #003366 !important;
+.custom-navbar {
+    background-color: #003366;
 }
 
-.navbar-brand, .nav-link, .nav-link:hover {
-    color: white !important;
+.navbar-brand, .nav-link {
+    color: white;
+    transition: color 0.3s, background-color 0.3s;
 }
 
 .navbar-toggler {
     border: none;
 }
 
-.nav-item .bg-secondary {
-    background-color: #0056b3 !important;
+.navbar-nav .nav-link:hover {
+    color: #ffcc00;
 }
 
-.sidebar {
+.nav-item .active {
+    background-color: #0056b3;
+}
+
+.custom-sidebar {
     background-color: #003366;
 }
 
-.sidebar .nav-link {
-    color: white !important;
+.custom-sidebar .nav-link {
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.sidebar .nav-link.bg-secondary {
-    background-color: #0056b3 !important;
-}
-
-.sidebar .nav-link:hover {
-    background-color: #0056b3 !important;
+.custom-sidebar .nav-link.active,
+.custom-sidebar .nav-link:hover {
+    background-color: #0056b3;
+    color: #ffcc00;
 }
 
 .header, .footer {
@@ -53,6 +55,12 @@ body {
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 10px 0;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card img {
@@ -73,16 +81,31 @@ body {
 .btn-primary {
     background-color: #0056b3;
     border-color: #0056b3;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
+.btn-primary:hover {
+    background-color: #004494;
+    border-color: #004494;
+}
 
-//classi per il ridimensionamento delle foto del cv e della foto profilo -- vedi index.blade.php (photo/CV) e create.index.php (photo/CV preview)
-.doctor-photo{
+/* Animazione per il pulsante di logout */
+.animate-logout {
+    transition: transform 0.3s, color 0.3s;
+}
+
+.animate-logout:hover {
+    transform: scale(1.1);
+    color: #ffcc00;
+}
+
+/* Classi per il ridimensionamento delle foto del CV e della foto profilo */
+.doctor-photo {
     width: 200px;
     height: 200px;
 }
 
-.doctor-cv  {
+.doctor-cv {
     width: 217px;
-    height: 260px; 
+    height: 200px; 
 }

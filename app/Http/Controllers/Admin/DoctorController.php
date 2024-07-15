@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDoctorRequest;
+use App\Http\Requests\UpdateDoctorRequest;
 use App\Models\Doctor;
 use App\Models\Performance;
 use App\Models\Specialization;
@@ -49,7 +50,7 @@ class DoctorController extends Controller
         $doctors = $request->validated();
 
         // SE LA RICHIESTA PRESENTA IL FILE CON LA CHIAVE PHOTO
-        if($request->hasFile('photo')) {
+        if ($request->hasFile('photo')) {
 
             // CREA IL PATH DELLA FOTO E LA METTE NELLO STORAGE
             $photo_path = Storage::put('photo', $request->photo);
@@ -59,8 +60,8 @@ class DoctorController extends Controller
         }
 
         // SE LA RICHIESTA PRESENTA IL FILE CON LA CHIAVE CV
-        if($request->hasFile('CV')) {
-            
+        if ($request->hasFile('CV')) {
+
             // CREA IL PATH DEL CV E LO METTE NELLO STORAGE
             $cv_path = Storage::put('cv', $request->CV);
 
@@ -77,7 +78,7 @@ class DoctorController extends Controller
 
         //SE LA REQUEST HA SPECIALIZATION
         if ($request->has('specialization')) {
-            
+
             //NELLA COLLECTION SPECIALIZATIONS ATTACCA LE SPECIALIZATION DELLA RICHIESTA
             $newDoctor->specializations()->attach($request->specialization);
         }
@@ -88,7 +89,7 @@ class DoctorController extends Controller
             //NELLA COLLECTION PERFORMANCES ATTACCA LE PERFORMANCE DELLA RICHIESTA
             $newDoctor->performances()->attach($request->performance);
         }
-        
+
         // TEST
         // dd($request->all());
 
@@ -100,7 +101,7 @@ class DoctorController extends Controller
      */
     public function show(string $id)
     {
-        //
+       // return view('admin.doctors.index', compact('doctor'));
     }
 
     /**
@@ -108,16 +109,65 @@ class DoctorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = Auth::user();
+        $doctor = Doctor::where('user_id', $user->id)->first();
+        $specializations = Specialization::all();
+        $performances = Performance::all();
+        return view('admin.doctors.edit', compact('user', 'doctor', 'specializations', 'performances'));
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(UpdateDoctorRequest $request, string $id)
+{
+    $doctors = $request->validated();
+
+    // Recupera il dottore esistente tramite l'ID
+    $doctor = Doctor::findOrFail($id);
+
+    // Se la richiesta presenta il file con la chiave 'photo'
+    if ($request->hasFile('photo')) {
+        // Elimina la vecchia foto se esiste
+        if ($doctor->photo) {
+            Storage::delete($doctor->photo);
+        }
+
+        // Crea il path della nuova foto e aggiorna il path
+        $photo_path = Storage::put('photo', $request->file('photo'));
+        $doctors['photo'] = $photo_path;
     }
+
+    // Se la richiesta presenta il file con la chiave 'CV'
+    if ($request->hasFile('CV')) {
+        // Elimina il vecchio CV se esiste
+        if ($doctor->CV) {
+            Storage::delete($doctor->CV);
+        }
+
+        // Crea il path del nuovo CV e aggiorna il path
+        $cv_path = Storage::put('cv', $request->file('CV'));
+        $doctors['CV'] = $cv_path;
+    }
+
+    // Aggiorna il dottore con i dati validati
+    $doctor->update($doctors);
+
+    // Aggiorna le specializzazioni se presenti
+    if ($request->has('specialization')) {
+        $doctor->specializations()->sync($request->input('specialization'));
+    }
+
+    // Aggiorna le performance se presenti
+    if ($request->has('performance')) {
+        $doctor->performances()->sync($request->input('performance'));
+    }
+
+    // Reindirizza alla vista dell'indice dei dottori con un messaggio di successo
+    return redirect()->route('admin.doctors.index')->with('success', 'Doctor updated successfully.');
+}
+
 
     /**
      * Remove the specified resource from storage.
