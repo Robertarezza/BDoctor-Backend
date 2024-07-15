@@ -28,7 +28,7 @@
 <body>
     <div id="app">
         <header class="navbar navbar-dark sticky-top custom-navbar flex-md-nowrap p-2 shadow px-4">
-            <div class="row justify-content-between">
+            <div class="row justify-content-between ms-row">
                 <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 d-none d-md-block" href="/">Dashboard D-Doctors</a>
                 <button class="navbar-toggler d-md-none collapsed w-25" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
         </header>
 
         <div class="container-fluid flex-1">
-            <div class="row h-100">
+            <div class="row h-100 ms-row">
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">

@@ -1,3 +1,4 @@
+// Imposta il layout del corpo della pagina con Flexbox, colore di sfondo e altezza minima
 body {
     background-color: #f4f4f9;
     color: #333;
@@ -8,6 +9,7 @@ body {
    
 }
 
+// Imposta il layout del contenitore #app con Flexbox e applica uno sfondo con gradiente e immagine
 #app {
     display: flex;
     flex-direction: column;
@@ -19,45 +21,55 @@ body {
     position: relative;
 }
 
+// ------------------------ADMIN----------------------------------
+
+// Colore di sfondo per la navbar personalizzata
 .custom-navbar {
     background-color: #003366;
 }
-
+// Aggiunge una transizione per il colore e lo sfondo dei link nella navbar
 .navbar-brand,
 .nav-link {
     // color: white;
     transition: color 0.3s, background-color 0.3s;
 }
 
+// Rimuove il bordo dal toggler della navbar in admin
 .navbar-toggler {
     border: none;
 }
 
+// Cambia il colore del link nella navbar al passaggio del mouse
 .navbar-nav .nav-link:hover {
     color: rgb(121, 177, 236);
 }
 
+// Colore di sfondo per il link attivo nella navbar
 .nav-item .active {
     background-color: #0056b3;
 }
 
+// Colore di sfondo e altezza per la sidebar personalizzata
 .custom-sidebar {
     background-color: #003366;
     height: 100%;
     min-height: 100vh;
 }
 
+// Colore e transizione per i link nella sidebar personalizzata
 .custom-sidebar .nav-link {
     color: white;
     transition: background-color 0.3s, color 0.3s;
 }
 
+ // Colore di sfondo e del testo per i link attivi e al passaggio del mouse nella sidebar
 .custom-sidebar .nav-link.active,
 .custom-sidebar .nav-link:hover {
     background-color: #0056b3;
     color: #ffcc00;
 }
 
+// Stili per l'header e il footer, inclusi colori, padding e allineamento del testo
 .header,
 .footer {
     background-color: #003366;
@@ -66,22 +78,26 @@ body {
     text-align: center;
 }
 
+// Imposta il layout del contenitore fluido con Flexbox
 .container-fluid {
     display: flex;
     flex: 1;
     flex-direction: column;
 }
 
-.row {
+// Imposta il layout delle righe con Flexbox
+.ms-row {
     flex: 1;
     display: flex;
 }
 
+// Stili per il contenuto principale, inclusi Flexbox e padding
 .content {
     flex: 1;
     padding: 20px 0px 60px 0px;
 }
 
+// Stili per le card, inclusi bordo, ombra, margine e transizioni
 .card {
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -89,16 +105,19 @@ body {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
+// Effetti al passaggio del mouse per le card, inclusi trasformazione e ombra
 .card:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+// Stili per le immagini nelle card, inclusa la larghezza massima e il bordo inferiore
 .card img {
     max-width: 100%;
     border-bottom: 1px solid #ddd;
 }
 
+// Padding per le sezioni services, team, about e contact
 .services,
 .team,
 .about,
@@ -106,6 +125,7 @@ body {
     padding: 50px 0;
 }
 
+// Stili per le icone nelle sezioni, inclusa dimensione del font, margine inferiore e colore
 .services .icon,
 .team .icon,
 .about .icon,
@@ -115,12 +135,14 @@ body {
     color: #0056b3;
 }
 
+// Stili per i bottoni primari, inclusi colori di sfondo e bordo, e transizioni
 .btn-primary {
     background-color: #0056b3;
     border-color: #0056b3;
     transition: background-color 0.3s, border-color 0.3s;
 }
 
+// Effetti al passaggio del mouse per i bottoni primary, inclusi colori di sfondo e bordo
 .btn-primary:hover {
     background-color: #004494;
     border-color: #004494;
@@ -131,10 +153,13 @@ body {
     transition: transform 0.3s, color 0.3s;
 }
 
+// Effetti al passaggio del mouse per il pulsante di logout, inclusi trasformazione e colore
 .animate-logout:hover {
     transform: scale(1.1);
     color: #ffcc00;
 }
+
+// ------------------------ADMIN----------------------------------
 
 /* Classi per il ridimensionamento delle foto del CV e della foto profilo */
 .doctor-photo {
