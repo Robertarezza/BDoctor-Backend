@@ -184,6 +184,7 @@ class DoctorController extends Controller
         }
 
         $doctor->delete();
-        return redirect()->route('admin.doctors.create')->with('message', 'Il tuo profilo è stato eliminato correttamente');
+        $user->delete();
+        return redirect()->route('/')->with('message', 'Il tuo profilo è stato eliminato correttamente');
     }
 }
