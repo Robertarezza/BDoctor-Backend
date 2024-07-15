@@ -174,7 +174,19 @@ class DoctorController extends Controller
      */
     public function destroy(Doctor $doctor, User $user)
     {
+        $user = User::findOrFail($doctor->user_id); // Trova l'utente associato al dottore
+
+        if($doctor->photo) {
+            Storage::delete($doctor->photo);
+        }
+ 
+        if($doctor->CV) {
+            Storage::delete($doctor->CV);
+        }
+
         $doctor->delete();
-        return redirect()->route('admin.doctors.create')->with('message', 'Il tuo profilo è stato eliminato correttamente');
+        $user->delete();
+        return redirect()->route('welcome')->with('message', 'Il tuo profilo è stato eliminato correttamente.');
+
     }
 }
