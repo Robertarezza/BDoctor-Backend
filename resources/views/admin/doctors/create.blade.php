@@ -2,6 +2,12 @@
 
 @section('content')
     <h1 class="text-center m-5">Crea il tuo profilo</h1>
+
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
     
     {{-- CONTAINER --}}
     <div class="container">
