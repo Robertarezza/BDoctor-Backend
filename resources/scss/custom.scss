@@ -183,3 +183,31 @@ body {
       top: 15%;
     }
   }
+
+.ms-header {
+    height: 10vh;
+}
+
+.ms-jumbotron {
+    background:linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../public/img/bg-jumbotron.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 90vh;
+}
+
+
+.ms-card {
+    background-image: linear-gradient(225deg, #5e7ce2ff, #92b4f4ff, #cfdee7ff);
+}
+
+
+// GRADIENT
+$gradient-top: linear-gradient(0deg, #0a369dff, #4472caff, #5e7ce2ff, #92b4f4ff, #cfdee7ff);
+$gradient-right: linear-gradient(90deg, #0a369dff, #4472caff, #5e7ce2ff, #92b4f4ff, #cfdee7ff);
+$gradient-bottom: linear-gradient(180deg, #0a369dff, #4472caff, #5e7ce2ff, #92b4f4ff, #cfdee7ff);
+$gradient-left: linear-gradient(270deg, #0a369dff, #4472caff, #5e7ce2ff, #92b4f4ff, #cfdee7ff);
+$gradient-top-right: linear-gradient(45deg, #0a369dff, #4472caff, #5e7ce2ff, #92b4f4ff, #cfdee7ff);
+$gradient-bottom-right: linear-gradient(135deg, #0a369dff, #4472caff, #5e7ce2ff, #92b4f4ff, #cfdee7ff);
+$gradient-top-left: linear-gradient(225deg, #0a369dff, #4472caff, #5e7ce2ff, #92b4f4ff, #cfdee7ff);
+$gradient-bottom-left: linear-gradient(315deg, #0a369dff, #4472caff, #5e7ce2ff, #92b4f4ff, #cfdee7ff);
+$gradient-radial: radial-gradient(#0a369dff, #4472caff, #5e7ce2ff, #92b4f4ff, #cfdee7ff);
