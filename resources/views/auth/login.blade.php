@@ -49,7 +49,7 @@
                                         {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{-- {{ __('Remember Me') }} --}} Salva Password
                                     </label>
                                 </div>
                             </div>

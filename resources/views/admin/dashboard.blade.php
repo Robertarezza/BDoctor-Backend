@@ -14,7 +14,7 @@
                             </div>
                         @endif
 
-                        <h1>Benvenuto! Dr. {{ $user->name }} {{ $user->surname }}</h1>
+                        <h1 class="text-capitalize">Benvenuto! Dr. {{ $user->name }} {{ $user->surname }}</h1>
                     </div>
                 </div>
             </div>
