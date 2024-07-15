@@ -103,7 +103,7 @@
 
             {{-- CV PREVIEW --}}
             <div class="mb-3">
-                <embed class="{{ $doctor->CV ? '' : 'd-none' }} doctor-cv" id="cv-preview" data="{{ $doctor->CV ? asset('storage/' . $doctor->CV) : '' }}" type="" >
+                <embed class="{{ $doctor->CV ? '' : 'd-none' }} doctor-cv" id="cv-preview" src="{{ $doctor->CV ? asset('storage/' . $doctor->CV) : '' }}" type="" >
                    
             </div>
             {{-- /CV PREVIEW --}}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDoctorRequest;
+use App\Http\Requests\UpdateDoctorRequest;
 use App\Models\Doctor;
 use App\Models\Performance;
 use App\Models\Specialization;
@@ -119,50 +120,54 @@ class DoctorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        // Recupera il dottore esistente tramite l'ID
-        $doctor = Doctor::findOrFail($id);
-          // Se la richiesta presenta il file con la chiave 'photo'
-    if($request->hasFile('photo')) {
+    public function update(UpdateDoctorRequest $request, string $id)
+{
+    $doctors = $request->validated();
+
+    // Recupera il dottore esistente tramite l'ID
+    $doctor = Doctor::findOrFail($id);
+
+    // Se la richiesta presenta il file con la chiave 'photo'
+    if ($request->hasFile('photo')) {
         // Elimina la vecchia foto se esiste
-        if($doctor->photo) {
+        if ($doctor->photo) {
             Storage::delete($doctor->photo);
         }
 
-        // Carica la nuova foto e aggiorna il path
-        $photo_path = Storage::put('photos', $request->photo);
-        $validatedData['photo'] = $photo_path;
+        // Crea il path della nuova foto e aggiorna il path
+        $photo_path = Storage::put('photo', $request->file('photo'));
+        $doctors['photo'] = $photo_path;
     }
 
     // Se la richiesta presenta il file con la chiave 'CV'
-    if($request->hasFile('CV')) {
+    if ($request->hasFile('CV')) {
         // Elimina il vecchio CV se esiste
-        if($doctor->CV) {
+        if ($doctor->CV) {
             Storage::delete($doctor->CV);
         }
 
-        // Carica il nuovo CV e aggiorna il path
-        $cv_path = Storage::put('cvs', $request->CV);
-        $validatedData['CV'] = $cv_path;
+        // Crea il path del nuovo CV e aggiorna il path
+        $cv_path = Storage::put('cv', $request->file('CV'));
+        $doctors['CV'] = $cv_path;
     }
 
     // Aggiorna il dottore con i dati validati
-    $doctor->update($validatedData);
+    $doctor->update($doctors);
 
     // Aggiorna le specializzazioni se presenti
     if ($request->has('specialization')) {
-        $doctor->specializations()->sync($request->specialization);
+        $doctor->specializations()->sync($request->input('specialization'));
     }
 
     // Aggiorna le performance se presenti
     if ($request->has('performance')) {
-        $doctor->performances()->sync($request->performance);
+        $doctor->performances()->sync($request->input('performance'));
     }
 
-    // Reindirizza alla vista del dottore aggiornato
-    return redirect()->route('admin.doctors.index', ['doctor' => $doctor->id])->with('success', 'Doctor updated successfully.');
-    }
+    // Reindirizza alla vista dell'indice dei dottori con un messaggio di successo
+    return redirect()->route('admin.doctors.index')->with('success', 'Doctor updated successfully.');
+}
+
 
     /**
      * Remove the specified resource from storage.
