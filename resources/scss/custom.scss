@@ -8,12 +8,7 @@ body {
 }
 
 .navbar-brand, .nav-link {
-    color: white;
-    transition: color 0.3s, background-color 0.3s;
-}
-
-#sidebar-id .nav-link {
-    color: white;
+    // color: white;
     transition: color 0.3s, background-color 0.3s;
 }
 
@@ -114,3 +109,21 @@ body {
     width: 217px;
     height: 200px; 
 }
+
+.ms-modal{
+    border-radius: 16px;
+    color: white;
+    background-color: #003366;
+    top: 15%;
+    animation: x-motion 0.5s ease-in;
+}
+
+@keyframes x-motion {
+    0% {
+      top: 0;
+    }
+    
+    100% {
+      top: 15%;
+    }
+  }

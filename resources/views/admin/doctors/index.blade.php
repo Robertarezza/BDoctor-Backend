@@ -86,13 +86,13 @@
 
     {{-- MODAL --}}
     @if ($doctor)
-        <div class="ms-modal-delete position-absolute top-50 start-50 translate-middle-x border p-3 d-none">
+        <div class="ms-modal-delete position-absolute start-50 translate-middle-x border p-3 d-none">
             <div class="d-flex justify-content-space-between gap-5">
                 <h3>Sei sicuro di voler eliminare il tuo profilo?</h3>
                 <button class="ms-closeModalDelete btn btn-secondary"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <hr>
-            <form action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST">
+            <form class="d-flex align-center justify-content-end" action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Cancella</button>
