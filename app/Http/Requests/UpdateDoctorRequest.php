@@ -22,12 +22,12 @@ class UpdateDoctorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'photo' => ['required', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'photo' => ['mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'specialization' => ['required'],
             'performance' => ['required'],
             'phone_number' => ['required', 'string', 'max:15'],
             'studio_address' => ['required', 'string', 'max:255'],
-            'CV' => ['required', 'mimes:pdf,doc,docx', 'max:10240'],
+            'CV' => [ 'mimes:pdf,doc,docx', 'max:10240'],
         ];
     }
 
