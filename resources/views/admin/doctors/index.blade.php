@@ -6,35 +6,30 @@
     <div class="container ms-container-index">
 
         {{-- DOCTOR INFOS --}}
-        <h1 class="text-center mb-5">Il tuo profilo</h1>
         @if ($doctor)
             <div class="row">
                 {{-- photo --}}
-                <div class="col-4">
-                    <img class="rounded w-100" src="{{ asset('storage/' . $doctor->photo) }}" alt="{{ $user->name }}_img">
+                <div class="col-sm-12 col-md-4 text-center rounded px-3 py-2 mb-3">
+                    <img class="w-100 ms_aspect-ratio rounded mb-3" src="{{ asset('storage/' . $doctor->photo) }}"
+                        alt="{{ $user->name }}_img">
+                    <div class="d-flex flex-column gap-3">
+                        {{-- OPEN MODAL --}}
+                        <button type="submit" class="ms-openModalDelete btn btn-danger" title="Elimina"><i
+                                class="fa-solid fa-trash-can "></i> Elimina il profilo</button>
+                        <a href="{{ route('admin.doctors.edit', ['doctor' => $doctor->id]) }}" class="btn btn-warning"
+                            title="Modifica">
+                            <i class="fa-solid fa-file-pen"></i>
+                            Modifica il profilo
+                        </a>
+                    </div>
                 </div>
-                <div class="col-8">
+                <div class="col-sm-12 col-md-8 text-white rounded-5">
                     {{-- name --}}
-                    <div class="text-capitalize fs-2 p-2 rounded bg-white">
+                    <div class="text-capitalize fs-2 p-2 ms-info-bg rounded">
                         {{ $user->name }} {{ $user->surname }}
                     </div>
-                    {{-- phone number --}}
-                    <div class="rounded bg-white my-2 p-2">
-                        <div class="fw-bold">Numero di telefono:</div>
-                        {{ $doctor->phone_number }}
-                    </div>
-                    {{-- email --}}
-                    <div class="rounded bg-white my-2 p-2">
-                        <div class="fw-bold">E-mail:</div>
-                        {{ $user->email }}
-                    </div>
-                    {{-- studio address --}}
-                    <div class="rounded bg-white my-2 p-2">
-                        <div class="fw-bold">Indirizzo:</div>
-                        {{ $doctor->studio_address }}
-                    </div>
                     {{-- performances --}}
-                    <div class="rounded bg-white my-2 p-2">
+                    <div class="rounded my-2 p-2 ms-info-bg">
                         <div class="fw-bold">Prestazioni:</div>
                         @forelse ($doctor->performances as $performance)
                             @if ($performance === $doctor->performances->last())
@@ -47,7 +42,7 @@
                         @endforelse
                     </div>
                     {{-- specializations --}}
-                    <div class="rounded bg-white my-2 p-2">
+                    <div class="rounded my-2 p-2 ms-info-bg">
                         <div class="fw-bold">Specializzazioni:</div>
                         @forelse ($doctor->specializations as $specialization)
                             @if ($specialization === $doctor->specializations->last())
@@ -59,20 +54,27 @@
                             nessuna specializzazione selezionata
                         @endforelse
                     </div>
+                    {{-- phone number --}}
+                    <div class="rounded my-2 p-2 ms-info-bg">
+                        <div class="fw-bold">Numero di telefono:</div>
+                        {{ $doctor->phone_number }}
+                    </div>
+                    {{-- email --}}
+                    <div class="rounded my-2 p-2 ms-info-bg">
+                        <div class="fw-bold">E-mail:</div>
+                        {{ $user->email }}
+                    </div>
+                    {{-- studio address --}}
+                    <div class="rounded my-2 p-2 ms-info-bg">
+                        <div class="fw-bold">Indirizzo:</div>
+                        {{ $doctor->studio_address }}
+                    </div>
                     {{-- cv --}}
-                    <div class="rounded bg-white my-2 p-2">
+                    <div class="rounded my-2 p-2 ms-info-bg">
                         <div class="fw-bold">Curriculum Vitae:</div>
                         <a href="{{ asset('storage/' . $doctor->CV) }}" target="_blank" class="text-primary">Guarda il
                             CV</a>
                     </div>
-
-                    {{-- OPEN MODAL --}}
-                    <button type="submit" class="ms-openModalDelete btn btn-outline-danger" title="Elimina"><i
-                            class="fa-solid fa-trash-can "></i></button>
-                    <a href="{{ route('admin.doctors.edit', ['doctor' => $doctor->id]) }}" class="btn btn-outline-warning"
-                        title="Modifica">
-                        <i class="fa-solid fa-file-pen"></i>
-                    </a>
                 </div>
             </div>
         @else
@@ -92,7 +94,8 @@
                 <button class="ms-closeModalDelete btn btn-secondary"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <hr>
-            <form class="d-flex align-center justify-content-end" action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST">
+            <form class="d-flex align-center justify-content-end"
+                action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Cancella</button>
