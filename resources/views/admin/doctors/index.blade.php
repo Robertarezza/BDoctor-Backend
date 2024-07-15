@@ -6,99 +6,72 @@
     <div class="container">
 
         {{-- DOCTOR INFOS --}}
-        <h1 class="text-center">I tuoi dati</h1>
+        <h1 class="text-center mb-5">I tuoi dati</h1>
         @if ($doctor)
-
-            {{-- PHOTO --}}
-            <img class="doctor-photo" src=" {{ asset('storage/' . $doctor->photo) }}" alt="">
-
-            {{-- TABLE --}}
-            <table class="table">
-
-
-                {{-- <tr>
-                    <th>ID</th>
-                    <td>{{ $doctor->id }}</td>
-                </tr> --}}
-
-                {{-- NAME --}}
-                <tr>
-                    <th>Nome</th>
-                    <td>{{ $user->name }}</td>
-                </tr>
-                {{-- /NAME --}}
-
-                {{-- SURNAME --}}
-                <tr>
-                    <th>Cognome</th>
-                    <td>{{ $user->surname }}</td>
-                </tr>
-                {{-- /SURNAME --}}
-
-
-                {{-- PHONE NUMBER --}}
-                <tr>
-                    <th>Telefono</th>
-                    <td>{{ $doctor->phone_number }}</td>
-                </tr>
-                {{-- /PHONE NUMBER --}}
-
-
-                {{-- STUDIO ADDRESS --}}
-                <tr>
-                    <th>Indirizzo dello studio</th>
-                    <td>{{ $doctor->studio_address }}</td>
-                </tr>
-                {{-- /STUDIO ADDRESS --}}
-
-
-                {{-- PERFORMANCES --}}
-                <tr>
-                    <th>Prestazioni</th>
-                    <td>
+            <div class="row">
+                {{-- photo --}}
+                <div class="col-4">
+                    <img class="rounded w-100" src="{{ asset('storage/' . $doctor->photo) }}" alt="{{ $user->name }}_img">
+                </div>
+                <div class="col-8">
+                    {{-- name --}}
+                    <div class="text-capitalize fs-2 p-2 rounded bg-white">
+                        {{ $user->name }} {{ $user->surname }}
+                    </div>
+                    {{-- phone number --}}
+                    <div class="rounded bg-white my-2 p-2">
+                        <div class="fw-bold">Numero di telefono:</div>
+                        {{ $doctor->phone_number }}
+                    </div>
+                    {{-- email --}}
+                    <div class="rounded bg-white my-2 p-2">
+                        <div class="fw-bold">E-mail:</div>
+                        {{ $user->email }}
+                    </div>
+                    {{-- studio address --}}
+                    <div class="rounded bg-white my-2 p-2">
+                        <div class="fw-bold">Indirizzo:</div>
+                        {{ $doctor->studio_address }}
+                    </div>
+                    {{-- performances --}}
+                    <div class="rounded bg-white my-2 p-2">
+                        <div class="fw-bold">Prestazioni:</div>
                         @forelse ($doctor->performances as $performance)
-                            {{ $performance->title }}
+                            @if ($performance === $doctor->performances->last())
+                                {{ $performance->title }}.
+                            @else
+                                {{ $performance->title }},
+                            @endif
                         @empty
                             nessuna specializzazione selezionata
                         @endforelse
-                    </td>
-                </tr>
-                {{-- /PERFORMANCES --}}
-
-
-                {{-- SPECIALIZATIONS --}}
-                <tr>
-                    <th>Specializzazioni</th>
-                    <td>
+                    </div>
+                    {{-- specializations --}}
+                    <div class="rounded bg-white my-2 p-2">
+                        <div class="fw-bold">Specializzazioni:</div>
                         @forelse ($doctor->specializations as $specialization)
-                            {{ $specialization->title }}
+                            @if ($specialization === $doctor->specializations->last())
+                                {{ $specialization->title }}.
+                            @else
+                                {{ $specialization->title }},
+                            @endif
                         @empty
                             nessuna specializzazione selezionata
                         @endforelse
-                    </td>
-                </tr>
-                {{-- /SPECIALIZATIONS --}}
-
-
-                {{-- CV --}}
-                <tr>
-                    <th>CV</th>
-                    <td>
-                        <embed class="doctor-cv" src=" {{ asset('storage/' . $doctor->CV) }}" alt="">
-                    </td>
-                </tr>
-                {{-- /CV --}}
-
-
-            </table>
-            {{-- /TABLE --}}
-
+                    </div>
+                    {{-- cv --}}
+                    <div class="rounded bg-white my-2 p-2">
+                        <div class="fw-bold">Curriculum Vitae:</div>
+                        <a href="{{ asset('storage/' . $doctor->CV) }}" target="_blank" class="text-primary" >Guarda il CV</a>
+                    </div>
+                </div>
+            </div>
         @else
             <p>No doctor profile found for the logged in user.</p>
         @endif
         {{-- /DOCTOR INFOS --}}
-    
-    
+
+
     </div>
     {{-- /CONTAINER --}}
 @endsection
