@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,10 +25,8 @@
     @vite(['resources/js/modalDelete.js'])
 
 </head>
-
 <body>
     <div id="app">
-
         <header class="navbar navbar-dark sticky-top custom-navbar flex-md-nowrap p-2 shadow px-4">
             <div class="row justify-content-between">
                 <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">BoolPress</a>
@@ -53,9 +50,6 @@
 
         <div class="container-fluid flex-1">
             <div class="row h-100">
-                <!-- Definire solo parte del menu di navigazione inizialmente per poi
-        aggiungere i link necessari giorno per giorno
-        -->
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
@@ -77,8 +71,6 @@
                             </li>
                         </ul>
                     </div>
-                  
-
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
@@ -100,8 +92,6 @@
         <footer class="footer text-center">
             <p>&copy; 2024 BoolPress. All Rights Reserved.</p>
         </footer>
-
     </div>
 </body>
-
 </html>
