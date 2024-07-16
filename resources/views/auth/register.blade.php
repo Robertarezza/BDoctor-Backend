@@ -88,7 +88,7 @@
                         </div>
                         
                     </form>
-                    <small>I campi contrassegnati con * con obbligatori</small>
+                    <small>I campi contrassegnati con * sono obbligatori</small>
                 </div>
             </div>
         </div>
