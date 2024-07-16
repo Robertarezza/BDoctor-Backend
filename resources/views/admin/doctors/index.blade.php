@@ -10,6 +10,8 @@
     </div>
     @endif
 
+    <h1 class="text-center m-5 text-light">Il tuo Profilo</h1>
+
     {{-- DOCTOR INFOS --}}
     @if ($doctor)
     <div class="row">

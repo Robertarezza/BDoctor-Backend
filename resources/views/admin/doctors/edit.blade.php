@@ -113,7 +113,7 @@
             {{-- CV PREVIEW --}}
             <div class="mb-3">
                 @if ($doctor->CV)
-                <embed class="{{ $doctor->CV ? '' : 'd-none' }} doctor-cv" id="cv-preview" src="{{ $doctor->CV ? asset('storage/' . $doctor->CV) : '' }}" type="application/pdf" style="width: 0%; height: 220px; object-fit: contain;">
+                <embed class="{{ $doctor->CV ? '' : 'd-none' }} doctor-cv" id="cv-preview" src="{{ $doctor->CV ? asset('storage/' . $doctor->CV) : '' }}" type="application/pdf" style="width: 70%; height: 229px; object-fit: contain;">
                 @else
                 <p>Nessun CV presente</p>
                 @endif
