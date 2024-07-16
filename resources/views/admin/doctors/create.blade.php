@@ -134,6 +134,7 @@
                 {{-- FORM --}}
             </div>
         </div>
+        <p>* questi sono obbligatori</p>
     </div>
     {{-- /CONTAINER --}}
 
