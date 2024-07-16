@@ -3,15 +3,15 @@
 @section('content')
     <div class="container-login mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-8 ">
-                <h3 class="card-header">{{ __('Login') }}</h3>
+            <div class="col-12">
+                {{-- <h3 class="card-header">{{ __('Login') }}</h3> --}}
 
                 <div class="card-body form">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="mb-4 row justify-content-start align-items-center">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+                        <div class="mb-4 row justify-content-evenly align-items-center">
+                            <label for="email" class="col-md-4 col-form-label text-md-right ">{{ __('E-Mail') }}</label>
 
                             <div class="col-md-6 justify-content-center align-items-center">
                                 <input id="email" type="email"
@@ -26,7 +26,7 @@
                             </div>
                         </div>
 
-                        <div class="mb-4 row justify-content-start align-items-center">
+                        <div class="mb-4 row justify-content-evenly align-items-center">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6 justify-content-center align-items-center">
@@ -42,23 +42,23 @@
                             </div>
                         </div>
 
-                        <div class="mb-4 row">
+                        {{-- <div class="mb-4 row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember"
                                         {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{-- {{ __('Remember Me') }} --}} Salva Password
+                                        Salva Password
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="mb-4 row mb-0 justify-content-center">
                             <div class="col-md-8 md-4 ">
                                 <button type="submit" class="login-button">
-                                    {{ __('Login') }}
+                                    {{ __('Accedi') }}
                                 </button>
 
                                 {{-- @if (Route::has('password.request'))

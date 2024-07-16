@@ -29,12 +29,14 @@
     <div id="app">
         <header class="navbar navbar-dark sticky-top custom-navbar flex-md-nowrap p-2 shadow px-4">
             <div class="row justify-content-between ms-row">
-                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 d-none d-md-block" href="/">Dashboard D-Doctors</a>
+                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 d-none d-md-block" href="/">Dashboard B-Doctors</a>
                 <button class="navbar-toggler d-md-none collapsed w-25" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-            <div class="navbar-nav">
+            <div class="navbar-nav flex-row">
+                <a class="animate-login-page" href="/">Pagina iniziale</a>
+
                 <div class="nav-item text-nowrap ms-2">
                     <a class="nav-link animate-logout" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
@@ -91,7 +93,7 @@
         </div>
 
         <footer class="footer text-center">
-            <p>&copy; 2024 BoolPress. All Rights Reserved.</p>
+            <p>&copy; 2024 B-Doctors. All Rights Reserved.</p>
         </footer>
     </div>
 </body>

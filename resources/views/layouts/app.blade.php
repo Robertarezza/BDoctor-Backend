@@ -25,34 +25,49 @@
 
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <div class="logo_laravel">
-                        <img src="{{ asset('img/logo.png') }}" alt="Logo Personalizzato" style="width: 62px;">
-                        <span style="font-size: smaller; font-weight: 900;">B-Doctor</span>
-                    </div>
-                    {{-- config('app.name', 'Laravel') --}}
-                </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                @guest
+                    <a class="navbar-brand d-flex align-items-center w-100 justify-content-center" href="{{ url('/') }}">
+                        <div class="logo_laravel">
+                            <img src="{{ asset('img/logo.png') }}" alt="Logo Personalizzato" style="width: 62px;">
+                            <span style="font-size: smaller; font-weight: 900;">B-Doctor</span>
+                        </div>
+                        {{-- config('app.name', 'Laravel') --}}
+                    </a>
+                @else
+                    <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+                        <div class="logo_laravel">
+                            <img src="{{ asset('img/logo.png') }}" alt="Logo Personalizzato" style="width: 62px;">
+                            <span style="font-size: smaller; font-weight: 900;">B-Doctor</span>
+                        </div>
+                        {{-- config('app.name', 'Laravel') --}}
+                    </a>
+                @endguest
+
+                @guest
+                    {{-- non mostrare nulla --}}
+                @else
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                @endguest
 
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
-                   
+
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
+                            </li> --}}
+                            {{-- @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @endif --}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -76,7 +91,7 @@
                             </li>
                         @endguest
                     </ul>
-                
+
                 </div>
             </div>
         </nav>

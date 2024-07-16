@@ -159,6 +159,19 @@ body {
     color: #ffcc00;
 }
 
+/* Animazione per il pulsante per tornare alla pagina iniziale */
+.animate-login-page {
+    color: rgb(255, 255, 255, 0.55);
+    padding: 8.2px 0;
+    text-decoration: none;
+    transition: transform 0.3s, color 0.3s;
+}
+
+// Effetti al passaggio del mouse per il pulsante di logout, inclusi trasformazione e colore
+.animate-login-page:hover {
+    transform: scale(1.1);
+}
+
 // ------------------------ADMIN----------------------------------
 
 /* Classi per il ridimensionamento delle foto del CV e della foto profilo */
@@ -223,11 +236,12 @@ body {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../public/img/bg-jumbotron.jpg');
     background-position: center;
     background-size: cover;
-    height: 90vh;
+    height: 93vh;
 }
 
 .ms-card {
     background-image: linear-gradient(225deg, #5e7ce2ff, #92b4f4ff, #cfdee7ff);
+    opacity: 0.8;
 }
 
 .ms_aspect-ratio {
@@ -239,6 +253,46 @@ body {
 
 }
 
+//testo opacizzato nel welcome
+.ms-text {
+    opacity: 0.8;
+}
+
+//margine delle card nel welcome
+.ms-margin-card {
+    margin-top: 250px;
+    gap: 100px;
+}
+
+//copiato stile bottone di login per la registrazione
+.register-button {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    background: linear-gradient(45deg, rgb(16, 137, 211) 0%, rgb(18, 177, 209) 100%);
+    color: white;
+    padding-block: 10px; // Padding ridotto
+    margin: 20px auto 10px auto; // Margine inferiore ridotto
+    border-radius: 10px; // Border-radius ridotto
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 10px 5px -5px; // Ridotto per una proporzione migliore
+    border: none;
+    transition: all 0.2s ease-in-out;
+    
+    &:hover {
+      transform: scale(1.03);
+      box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 12px 6px -6px; // Ridotto per una proporzione migliore
+    }
+    
+    &:active {
+      transform: scale(0.95);
+      box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 8px 4px -4px; // Ridotto per una proporzione migliore
+    }
+}
+
+//altezza bottone di chiusura modale
+.ms-closeModalDelete{
+    height: 50px;
+}
 
 // GRADIENT
 $gradient-top: linear-gradient(0deg, #0a369dff, #4472caff, #5e7ce2ff, #92b4f4ff, #cfdee7ff);
