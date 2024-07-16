@@ -165,7 +165,7 @@ class DoctorController extends Controller
     }
 
     // Reindirizza alla vista dell'indice dei dottori con un messaggio di successo
-    return redirect()->route('admin.doctors.index')->with('success', 'Doctor updated successfully.');
+    return redirect()->route('admin.doctors.index')->with('message', 'Modifica avvenuta con successo');
 }
 
 

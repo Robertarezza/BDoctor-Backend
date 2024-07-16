@@ -20,14 +20,15 @@ class UpdateDoctorRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {
+    {  
+        $doctor = $this->route('doctor');
         return [
-            'photo' => ['mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'photo' => [ $doctor ? 'nullable' : 'required','mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'specialization' => ['required'],
             'performance' => ['required'],
             'phone_number' => ['required', 'string', 'max:15'],
             'studio_address' => ['required', 'string', 'max:255'],
-            'CV' => [ 'mimes:pdf,doc,docx', 'max:10240'],
+            'CV' => [ $doctor ? 'nullable' : 'required', 'mimes:pdf,doc,docx', 'max:10240'],
         ];
     }
 

@@ -4,6 +4,11 @@
 
     {{-- CONTAINER --}}
     <div class="container ms-container-index">
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
 
         {{-- DOCTOR INFOS --}}
         @if ($doctor)
