@@ -40,11 +40,11 @@ class UpdateDoctorRequest extends FormRequest
     public function messages()
     {
         return [
-            'photo.required' => 'Si perga di inserire la foto',
+            'photo.required' => 'Si prega di inserire la foto',
             'photo.mimes' => 'La foto deve essere in formato jpeg, png, jpg, gif o svg',
             'photo.max' => 'La foto non deve superare i 2048KB',
-            'specialization.required' => 'Si perga di inserire almeno una specializzazione',
-            'performance.required' => 'Si perga di inserire almeno una prstazione',
+            'specialization.required' => 'Si prega di inserire almeno una specializzazione',
+            'performance.required' => 'Si prega di inserire almeno una prstazione',
             'phone_number.required' => 'Si prega di inserire un numero telefonico',
             'phone_number.max' => 'Il numero telefonico non deve superare i 15 caratteri',
             'studio_address.max' => 'L\'indirizzo dello studio non deve superare i 255 caratteri',
