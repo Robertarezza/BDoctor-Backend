@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1 class="text-center m-5 text-light">Crea il tuo profilo</h1>
+<h1 class="text-center mt-2 text-light">Crea il tuo profilo</h1>
 
 
 

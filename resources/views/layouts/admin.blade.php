@@ -86,7 +86,8 @@
                     </div> -->
                 </nav>
 
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 content">
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 content" style="margin: 0 auto;
+    padding: 0;">
                     @yield('content')
                 </main>
             </div>

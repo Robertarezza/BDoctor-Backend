@@ -1,10 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1 class="text-center m-5 text-light">Modifica il tuo profilo</h1>
+
 
 {{-- CONTAINER --}}
 <div class="container">
+<h1 class="text-center text-light">Modifica il tuo profilo</h1>
     <div class="row justify-content-center">
         <div class="col-md-8">
             {{-- FORM --}}

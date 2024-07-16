@@ -3,14 +3,14 @@
 @section('content')
 
 {{-- CONTAINER --}}
-<div class="container ms-container-index">
+<div class="container">
     @if (session('message'))
     <div class="alert alert-success">
         {{ session('message') }}
     </div>
     @endif
 
-    <h1 class="text-center m-5 text-light">Il tuo Profilo</h1>
+    <h1 class="text-center mb-2 text-light">Il tuo Profilo</h1>
 
     {{-- DOCTOR INFOS --}}
     @if ($doctor)
