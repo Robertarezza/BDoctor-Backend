@@ -96,14 +96,14 @@
         <div class="ms-modal-delete position-absolute start-50 translate-middle-x border p-3 d-none">
             <div class="d-flex justify-content-space-between gap-5">
                 <h3>Sei sicuro di voler eliminare il tuo profilo?</h3>
-                <button class="ms-closeModalDelete btn btn-secondary"><i class="fa-solid fa-xmark"></i></button>
+                <button class="ms-closeModalDelete btn btn-secondary">Annulla</button>
             </div>
             <hr>
             <form class="d-flex align-center justify-content-end"
                 action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">Cancella</button>
+                <button type="submit" class="btn btn-danger">Elimina</button>
             </form>
         </div>
     @endif
