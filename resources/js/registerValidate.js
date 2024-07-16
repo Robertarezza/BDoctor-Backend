@@ -11,17 +11,21 @@ registerBtn.addEventListener('click', (e) => {
     const errorMessage = document.querySelector('#error-message');
 
     const minChar = 8 //lunghezza minima psw
-    if(password.length < minChar) {
+    if(password.length === 0) {
         e.preventDefault();
         errorContainer.classList.remove('d-none');
-        errorMessage.innerHTML = `la password deve contenere minimo ${minChar} caratteri`;
+        errorMessage.innerHTML = `Si prega di inserire la password`;
+    } else if(password.length < minChar) {
+        e.preventDefault();
+        errorContainer.classList.remove('d-none');
+        errorMessage.innerHTML = `La password deve contenere minimo ${minChar} caratteri`;
     } else if(password.length !== passwordConfirm.length) {
         e.preventDefault();
         errorContainer.classList.remove('d-none');
-        errorMessage.innerHTML = 'le password sono di lunghezza diversa';
+        errorMessage.innerHTML = 'Le password sono di lunghezza diversa';
     } else if(password !== passwordConfirm) {
         e.preventDefault();
         errorContainer.classList.remove('d-none');
-        errorMessage.innerHTML = 'le password non corrispondono'; 
+        errorMessage.innerHTML = 'Le password non corrispondono'; 
     }
 });
