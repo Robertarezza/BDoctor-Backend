@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
-            $table->string('email')->unique();
+            $table->string('email'); //->unique(); tolto per evitare un conflitto con la solftdelete
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
