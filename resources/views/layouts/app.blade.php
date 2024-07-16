@@ -24,7 +24,7 @@
     <div id="app">
 
 
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm pt-4 pb-4 fixed-top" style="height: 10vh;">
             <div class="container">
 
                 @guest

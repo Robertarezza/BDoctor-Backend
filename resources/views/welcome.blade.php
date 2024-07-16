@@ -1,13 +1,14 @@
 @extends('layouts.app')
 @section('content')
+   
+
+    <div class="jumbotron p-3 bg-light ms-jumbotron">
     @if (session('message'))
         <div class="alert alert-success">
             {{ session('message') }}
         </div>
     @endif
-
-    <div class="jumbotron p-5 bg-light ms-jumbotron">
-        <div class="container py-5">
+        <div class="container py-5 mt-5">
             <h1 class="display-5 fw-bold text-center text-white ms-text">
                 Benvenuto nella Dashboard di B-Doctor
             </h1>
