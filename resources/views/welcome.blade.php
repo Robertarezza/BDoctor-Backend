@@ -9,7 +9,7 @@
             {{ session('message') }}
         </div>
         @endif
-        <h1 class="display-5 fw-bold text-center text-white ms-text">
+        <h1 class="display-5 fw-bold text-center text-white ms-text ms-welcome-title">
             Benvenuto nella Dashboard di B-Doctor
         </h1>
         <p class=" text-center text-white ms-text" style="font-size: 25px; font-weight: 900;">Scegli una delle opzioni</p>

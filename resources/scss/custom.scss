@@ -15,12 +15,13 @@ body {
     flex-direction: column;
     flex: 1;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../public/img/backgroundBE.jpg');
-    height: 92vh;
+    height: 100vh;
     background-position: center;
     background-size: cover;
     position: relative;
     background-position: right top; 
     background-repeat: no-repeat; 
+    overflow-y:hidden;
 }
 
 // ------------------------ADMIN----------------------------------
@@ -260,9 +261,13 @@ body {
     opacity: 0.8;
 }
 
+.ms-welcome-title {
+    padding-top: 200px;
+}
+
 //margine delle card nel welcome
 .ms-margin-card {
-    margin-top: 250px;
+    // margin-top: 250px;
     gap: 100px;
 }
 

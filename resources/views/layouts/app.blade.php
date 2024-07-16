@@ -24,14 +24,14 @@
     <div id="app">
 
 
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm pt-4 pb-4 fixed-top" style="height: 10vh;">
+        <nav class="navbar navbar-expand-md navbar-light bg-transparent pt-4 pb-4 fixed-top">
             <div class="container">
 
                 @guest
                     <a class="navbar-brand d-flex align-items-center w-100 justify-content-center" href="{{ url('/') }}">
                         <div class="logo_laravel">
                             <img src="{{ asset('img/logo.png') }}" alt="Logo Personalizzato" style="width: 62px;">
-                            <span style="font-size: smaller; font-weight: 900;">B-Doctor</span>
+                            <span class="text-white" style="font-size: smaller; font-weight: 900;">B-Doctor</span>
                         </div>
                         {{-- config('app.name', 'Laravel') --}}
                     </a>
@@ -39,7 +39,7 @@
                     <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                         <div class="logo_laravel">
                             <img src="{{ asset('img/logo.png') }}" alt="Logo Personalizzato" style="width: 62px;">
-                            <span style="font-size: smaller; font-weight: 900;">B-Doctor</span>
+                            <span class="text-white" style="font-size: smaller; font-weight: 900;">B-Doctor</span>
                         </div>
                         {{-- config('app.name', 'Laravel') --}}
                     </a>
