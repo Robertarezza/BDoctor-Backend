@@ -36,15 +36,7 @@
                     {{-- performances --}}
                     <div class="rounded my-2 p-2 ms-info-bg">
                         <div class="fw-bold">Prestazioni:</div>
-                        @forelse ($doctor->performances as $performance)
-                            @if ($performance === $doctor->performances->last())
-                                {{ $performance->title }}.
-                            @else
-                                {{ $performance->title }},
-                            @endif
-                        @empty
-                            nessuna specializzazione selezionata
-                        @endforelse
+                        <div> {{ $doctor->performance }} </div>
                     </div>
                     {{-- specializations --}}
                     <div class="rounded my-2 p-2 ms-info-bg">

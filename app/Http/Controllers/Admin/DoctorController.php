@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
 use App\Models\Doctor;
-use App\Models\Performance;
 use App\Models\Specialization;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -38,8 +37,7 @@ class DoctorController extends Controller
         $user = Auth::user();
         $doctor = Doctor::where('user_id', $user->id)->first();
         $specializations = Specialization::all();
-        $performances = Performance::all();
-        return view('admin.doctors.create', compact('user', 'doctor', 'specializations', 'performances'));
+        return view('admin.doctors.create', compact('user', 'doctor', 'specializations'));
     }
 
     /**
@@ -83,15 +81,8 @@ class DoctorController extends Controller
             $newDoctor->specializations()->attach($request->specialization);
         }
 
-        //SE LA REQUEST HA PERFORMANCE
-        if ($request->has('performance')) {
-
-            //NELLA COLLECTION PERFORMANCES ATTACCA LE PERFORMANCE DELLA RICHIESTA
-            $newDoctor->performances()->attach($request->performance);
-        }
-
         // TEST
-        // dd($request->all());
+        // dd($request->validated());
 
         return redirect()->route('admin.doctors.index', ['doctor' => $newDoctor->id]);
     }
@@ -112,8 +103,7 @@ class DoctorController extends Controller
         $user = Auth::user();
         $doctor = Doctor::where('user_id', $user->id)->first();
         $specializations = Specialization::all();
-        $performances = Performance::all();
-        return view('admin.doctors.edit', compact('user', 'doctor', 'specializations', 'performances'));
+        return view('admin.doctors.edit', compact('user', 'doctor', 'specializations'));
     }
     
 
@@ -157,11 +147,6 @@ class DoctorController extends Controller
     // Aggiorna le specializzazioni se presenti
     if ($request->has('specialization')) {
         $doctor->specializations()->sync($request->input('specialization'));
-    }
-
-    // Aggiorna le performance se presenti
-    if ($request->has('performance')) {
-        $doctor->performances()->sync($request->input('performance'));
     }
 
     // Reindirizza alla vista dell'indice dei dottori con un messaggio di successo
