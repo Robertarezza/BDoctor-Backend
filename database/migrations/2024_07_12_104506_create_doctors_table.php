@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('phone_number');
             $table->string('studio_address');
             $table->string('CV');
+            $table->string('performance');
             $table->timestamps();
         });
     }

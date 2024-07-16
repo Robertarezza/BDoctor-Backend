@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call([UsersTableSeeder::class]);
         $this->call([DoctorsTableSeeder::class]);
         $this->call([SpecializationsTableSeeder::class]);
-        $this->call([PerformancesTableSeeder::class]);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

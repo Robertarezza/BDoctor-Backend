@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('sponsorship_doctor', function (Blueprint $table) {
             $table->unsignedBigInteger('doctor_id')->index();
-            $table->foreign('doctor_id')->references('id')->on('doctors')->cascadeOnDelete();
+            $table->foreign('doctor_id')->references('id')->on('doctors');
             $table->unsignedBigInteger('sponsorship_id')->index();
-            $table->foreign('sponsorship_id')->references('id')->on('sponsorships')->cascadeOnDelete();
+            $table->foreign('sponsorship_id')->references('id')->on('sponsorships');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
         });
