@@ -120,6 +120,7 @@
             </form>
             {{-- FORM --}}
         </div>
+        <p>* questi sono obbligatori</p>
     </div>
 </div>
 {{-- /CONTAINER --}}
