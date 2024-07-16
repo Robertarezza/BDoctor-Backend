@@ -17,7 +17,7 @@
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
-    @vite(['resources/js/passwordValidate.js'])
+    @vite(['resources/js/registerValidate.js'])
 </head>
 
 <body>

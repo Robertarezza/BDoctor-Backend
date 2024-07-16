@@ -20,4 +20,18 @@ class ProfileUpdateRequest extends FormRequest
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'la casella del nome non può essere vuota',
+            'name.string' => 'il nome non può contenere caratteri speciali',
+            'name.max' => 'il nome è troppo lungo, inserirne uno più corto',
+            'email.required' => 'la casella mail non può essere vuota',
+            'email.lowercase' => 'la mail non può contenere lettere maiuscole',
+            'email.email' => 'mail non valida',
+            'email.max' => 'la mail è troppo lunga, inserirne una più corta',
+            'email.unique' => 'la mail è già registrata'
+        ];
+    }
 }

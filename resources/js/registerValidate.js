@@ -1,6 +1,9 @@
 const registerBtn = document.querySelector('.register-button');
 
 
+
+
+//PASSWORD
 registerBtn.addEventListener('click', (e) => {
     const password = document.querySelector('#password').value;
     const passwordConfirm = document.querySelector('#password-confirm').value;

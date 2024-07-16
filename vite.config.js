@@ -5,7 +5,7 @@ import path from "path";
 export default defineConfig({
     plugins: [
         laravel({
-            input: ["resources/scss/app.scss", "resources/js/app.js", "resources/js/modalDelete.js", "resources/js/passwordValidate.js" ],
+            input: ["resources/scss/app.scss", "resources/js/app.js", "resources/js/modalDelete.js", "resources/js/registerValidate.js" ],
             refresh: true,
         }),
     ],
