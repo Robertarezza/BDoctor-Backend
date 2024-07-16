@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8 mt-4">
                 <div class="card">
-                    <div class="card-header">Homepage</div>
+                    {{-- <div class="card-header">Homepage</div> --}}
 
                     <div class="card-body">
                         @if (session('status'))
@@ -14,7 +14,7 @@
                             </div>
                         @endif
 
-                        <h1 class="text-capitalize">Benvenuto! Dr. {{ $user->name }} {{ $user->surname }}</h1>
+                        <h1 class="text-capitalize text-center">Benvenuto! Dr. {{ $user->name }} {{ $user->surname }}</h1>
                     </div>
                 </div>
             </div>
