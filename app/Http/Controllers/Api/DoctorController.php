@@ -9,9 +9,8 @@ use Illuminate\Http\Request;
 class DoctorController extends Controller
 {
       
-    public function index(Request $request)
+    public function index()
     {
-        dd($request->specialization_id);
         $doctors = Doctor::with(['user', 'specializations'])->get();
         $data=["results"=>$doctors];
     
