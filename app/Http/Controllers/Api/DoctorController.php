@@ -18,10 +18,10 @@ class DoctorController extends Controller
     
     }
 
-    public function show(string $doctorId)
+    public function show(string $doctor_id)
     {
         //dd($doctorId);
-        $doctor = Doctor::with(['user', 'specializations'])->where('id', $doctorId)->first();
+        $doctor = Doctor::with(['user', 'specializations'])->where('id', $doctor_id)->first();
         if (!$doctor) {
             return response()->json(['message' => 'Doctor not found'], 404);
         } 
