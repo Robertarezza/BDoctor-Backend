@@ -9,10 +9,18 @@ use Illuminate\Http\Request;
 class DoctorController extends Controller
 {
       
-    public function index()
+    public function index(Request $request)
     {
-        $doctors = Doctor::with(['user', 'specializations'])->get();
-        $data=["results"=>$doctors];
+        $doctorsQuery = Doctor::with(['user', 'specializations']);
+        if($request->specialization_id) {
+            $doctorsQuery->whereHas('specializations', function ($query) use ($request) {
+                $query->where('specialization_id', $request->specialization_id);
+            });
+        }
+        $doctors = $doctorsQuery->get();
+        $data = [
+            "results"=>$doctors
+        ];
     
     return response()->json($data);
     
@@ -20,11 +28,10 @@ class DoctorController extends Controller
 
     public function show(string $doctorId)
     {
-        //dd($doctorId);
         $doctor = Doctor::with(['user', 'specializations'])->where('id', $doctorId)->first();
         if (!$doctor) {
             return response()->json(['message' => 'Doctor not found'], 404);
-        } 
+        }
         $data = [
             'results' => $doctor,
         ];
