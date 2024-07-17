@@ -17,4 +17,17 @@ class DoctorController extends Controller
     return response()->json($data);
     
     }
+
+    public function show(string $doctorId)
+    {
+        //dd($doctorId);
+        $doctor = Doctor::with(['user', 'specializations'])->where('id', $doctorId)->first();
+        if (!$doctor) {
+            return response()->json(['message' => 'Doctor not found'], 404);
+        } 
+        $data = [
+            'results' => $doctor,
+        ];
+        return response()->json($data);
+    }
 }
