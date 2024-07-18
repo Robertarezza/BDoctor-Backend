@@ -3,7 +3,7 @@
 return [
     [
         'user_id' => '1',
-        'photo' => 'https://example.com/photos/doc1.jpg',
+        'photo' => 'https://img.freepik.com/free-photo/handsome-elderly-doctor-uniform_144627-1195.jpg?w=740&t=st=1721291551~exp=1721292151~hmac=42a98bcf39b38873fa2bc646cade15a49e4a4bb94be1c47cb6adf52cea49e369',
         'phone_number' => '123-456-7890',
         'studio_address' => '123 Main St, Cityville',
         'CV' => 'https://example.com/photos/doc12.jpg',
