@@ -24,7 +24,7 @@ class StoreReviewRequest extends FormRequest
         return [
             'guest_name' => ['required'],
             'guest_mail' => ['required', 'email'],
-            'rewiew' => ['required'],
+            'review' => ['required'],
         ];
     }
 
@@ -39,7 +39,7 @@ class StoreReviewRequest extends FormRequest
             'guest_name.required' => 'Si prega di inserire il proprio nome',
             'guest_mail.required' => 'Si prega di inserire la vostra mail',
             'guest_mail.email' => 'E\' stata inserita una mail non valida',
-            'rewiew.required' => 'Si prega di inserire la vostra recensione',
+            'review.required' => 'Si prega di inserire la vostra recensione',
         ];
     }
 }

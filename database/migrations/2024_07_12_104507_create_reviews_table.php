@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('doctor_id')->references('id')->on('doctors')->cascadeOnDelete();
             $table->string('guest_name');
             $table->string('guest_mail')->nullable();
-            $table->text('rewiew');
+            $table->text('review');
             $table->timestamps();
         });
     }
