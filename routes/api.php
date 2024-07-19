@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\DoctorController;
+use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\SpecializationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,5 @@ Route::get('/doctors', [DoctorController::class,"index"]);
 Route::get('/doctors/{id}', [DoctorController::class, 'show']);
 
 Route::get('/specializations', [SpecializationController::class, 'index']);
+
+Route::post('/reviews', [ReviewController::class, 'store']);
