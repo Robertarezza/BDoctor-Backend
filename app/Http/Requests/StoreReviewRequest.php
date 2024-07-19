@@ -22,6 +22,7 @@ class StoreReviewRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'doctor_id' => ['required'],
             'guest_name' => ['required'],
             'guest_mail' => ['required', 'email'],
             'review' => ['required'],
@@ -36,6 +37,7 @@ class StoreReviewRequest extends FormRequest
     public function messages()
     {
         return [
+            'doctor_id.required' => 'Si prega di inserire un dottore',
             'guest_name.required' => 'Si prega di inserire il proprio nome',
             'guest_mail.required' => 'Si prega di inserire la vostra mail',
             'guest_mail.email' => 'E\' stata inserita una mail non valida',
