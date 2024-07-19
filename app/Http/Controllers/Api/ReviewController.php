@@ -17,7 +17,7 @@ class ReviewController extends Controller
         $newReview->fill($data);
         $newReview->save();
         return response()->json([
-            'result' => 'ok'
+            'success' => true
         ]);
     }
 }
