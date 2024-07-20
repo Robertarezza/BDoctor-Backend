@@ -21,6 +21,7 @@
         </div>
     </div>
 </div>
+@if ($reviews) {{-- Controlla se la variabile $reviews è settata --}}
 <div class="container mt-4">
     <h2 class="text-center mb-4 border text-light">La tua ultima recensione</h2>
     <div class="row justify-content-center">
@@ -36,4 +37,10 @@
         </div>
     </div>
 </div>
+@else
+<div class="container mt-4">
+    <h2 class="text-center mb-4 border text-light">Nessuna recensione presente</h2>
+</div>
+@endif
+
 @endsection
