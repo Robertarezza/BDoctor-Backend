@@ -44,6 +44,15 @@
                     </div>
                     {{-- specializations --}}
                     <div class="rounded my-2 p-2 ms-info-bg">
+                        <div class="fw-bold">Voto:</div>
+                        @forelse ($doctor->ratings as $rating)
+                            {{ $rating->rating }}
+                        @empty
+                            nessun voto presente
+                        @endforelse
+                    </div>
+                    {{-- specializations --}}
+                    <div class="rounded my-2 p-2 ms-info-bg">
                         <div class="fw-bold">Specializzazioni:</div>
                         @forelse ($doctor->specializations as $specialization)
                             @if ($specialization === $doctor->specializations->last())
