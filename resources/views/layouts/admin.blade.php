@@ -73,6 +73,19 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="position-sticky pt-3">
+               
+                        <ul class="nav flex-column">
+                        
+                            <li class="nav-item">
+                                <a class="nav-link {{ Route::currentRouteName() == 'admin.reviews.index' ? 'active' : '' }}"
+                                    href="{{ route('admin.reviews.index') }}">
+                                    <i class="fa-solid fa-file-lines"></i> Le tue recensioni
+                                </a>
+                            </li>
+                       
+                        </ul>
+                    </div>
 
                     <!-- <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
