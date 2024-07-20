@@ -21,72 +21,13 @@
     height: auto;
     object-fit: cover;">
 
-                    <div class="d-flex flex-column gap-3">
-                        {{-- OPEN MODAL --}}
-                        <button type="submit" class="ms-openModalDelete btn btn-danger" title="Elimina"><i
-                                class="fa-solid fa-trash-can "></i> Elimina il profilo</button>
-                        <a href="{{ route('admin.doctors.edit', ['doctor' => $doctor->id]) }}" class="btn btn-warning"
-                            title="Modifica">
-                            <i class="fa-solid fa-file-pen"></i>
-                            Modifica il profilo
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-8 text-white rounded-5">
-                    {{-- name --}}
-                    <div class="text-capitalize fs-2 p-2 ms-info-bg rounded">
-                        {{ $user->name }} {{ $user->surname }}
-                    </div>
-                    {{-- performances --}}
-                    <div class="rounded my-2 p-2 ms-info-bg">
-                        <div class="fw-bold">Prestazioni:</div>
-                        <div> {{ $doctor->performance }} </div>
-                    </div>
-                    {{-- specializations --}}
-                    <div class="rounded my-2 p-2 ms-info-bg">
-                        <div class="fw-bold">Voto:</div>
-                        @forelse ($doctor->ratings as $rating)
-                            {{ $rating->rating }}
-                        @empty
-                            nessun voto presente
-                        @endforelse
-                    </div>
-                    {{-- specializations --}}
-                    <div class="rounded my-2 p-2 ms-info-bg">
-                        <div class="fw-bold">Specializzazioni:</div>
-                        @forelse ($doctor->specializations as $specialization)
-                            @if ($specialization === $doctor->specializations->last())
-                                {{ $specialization->title }}.
-                            @else
-                                {{ $specialization->title }},
-                            @endif
-                        @empty
-                            nessuna specializzazione selezionata
-                        @endforelse
-                    </div>
-                    {{-- phone number --}}
-                    <div class="rounded my-2 p-2 ms-info-bg">
-                        <div class="fw-bold">Numero di telefono:</div>
-                        {{ $doctor->phone_number }}
-                    </div>
-                    {{-- email --}}
-                    <div class="rounded my-2 p-2 ms-info-bg">
-                        <div class="fw-bold">E-mail:</div>
-                        {{ $user->email }}
-                    </div>
-                    {{-- studio address --}}
-                    <div class="rounded my-2 p-2 ms-info-bg">
-                        <div class="fw-bold">Indirizzo:</div>
-                        {{ $doctor->studio_address }}
-                    </div>
-                    {{-- cv --}}
-                    <div class="rounded my-2 p-2 ms-info-bg">
-                        <div class="fw-bold">Curriculum Vitae:</div>
-                        <a href="{{ asset('storage/' . $doctor->CV) }}" target="_blank" class="text-primary">Guarda il
-                            CV</a>
-                    </div>
-                </div>
-
+            <div class="d-flex flex-column gap-3">
+                {{-- OPEN MODAL --}}
+                <button type="submit" class="ms-openModalDelete btn btn-danger" title="Elimina"><i class="fa-solid fa-trash-can "></i> Elimina il profilo</button>
+                <a href="{{ route('admin.doctors.edit', ['doctor' => $doctor->id]) }}" class="btn btn-warning" title="Modifica">
+                    <i class="fa-solid fa-file-pen"></i>
+                    Modifica il profilo
+                </a>
             </div>
         </div>
         <div class="col-sm-12 col-md-8 text-white rounded-5">
@@ -98,6 +39,15 @@
             <div class="rounded my-2 p-2 ms-info-bg">
                 <div class="fw-bold">Prestazioni:</div>
                 <div> {{ $doctor->performance }} </div>
+            </div>
+            {{-- specializations --}}
+            <div class="rounded my-2 p-2 ms-info-bg">
+                <div class="fw-bold">Voto:</div>
+                @forelse ($doctor->ratings as $rating)
+                {{ $rating->rating }}
+                @empty
+                nessun voto presente
+                @endforelse
             </div>
             {{-- specializations --}}
             <div class="rounded my-2 p-2 ms-info-bg">
@@ -134,11 +84,14 @@
                     CV</a>
             </div>
         </div>
+
     </div>
-    @else
-    <p class="text-center">Crea il tuo profilo <a href="{{ route('admin.doctors.create') }}">qui</a></p>
-    @endif
-    {{-- /DOCTOR INFOS --}}
+</div>
+
+@else
+<p class="text-center">Crea il tuo profilo <a href="{{ route('admin.doctors.create') }}">qui</a></p>
+@endif
+{{-- /DOCTOR INFOS --}}
 
 
 </div>
