@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ReviewController;
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,9 +30,8 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('/doctors', DoctorController::class);
-
+        Route::resource('/messages', MessageController::class);
         Route::resource('reviews', ReviewController::class)->except([ 'store', 'create']);
-      
     });
 
 require __DIR__ . '/auth.php';

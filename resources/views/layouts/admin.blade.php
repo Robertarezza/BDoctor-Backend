@@ -74,6 +74,18 @@
                         </ul>
                     </div>
                     <div class="position-sticky pt-3">
+
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link {{ Route::currentRouteName() == 'admin.messages.index' ? 'active' : '' }}"
+                                    href="{{ route('admin.messages.index') }}">
+                                    <i class="fa-solid fa-comments"></i> Messaggi
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+
                
                         <ul class="nav flex-column">
                         
@@ -86,6 +98,7 @@
                        
                         </ul>
                     </div>
+
 
                     <!-- <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
