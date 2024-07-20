@@ -16,6 +16,7 @@ class MessageController extends Controller
     {
         $user = Auth::user();
         $messages = Message::where('doctor_id', $user->id)->orderByDesc('created_at')->paginate(10);
+        // dd($messages);
         return view('admin.messages.index', compact('messages'));
     }
 
