@@ -17,7 +17,7 @@
                     <tbody>
                         @foreach ($messages as $message)                            
                             <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">{{ $loop->iteration }}</th>
                                 <td>{{ $message->guest_name }}</td>
                                 <td>{{ $message->guest_surname }}</td>
                                 <td>{{ $message->guest_mail }}</td>
