@@ -28,4 +28,8 @@ class Doctor extends Model
     public function messages() {
         return $this->hasMany(Message::class);
     }
+
+    public function ratings() {
+        return $this->belongsToMany(Rating::class);
+    }
 }

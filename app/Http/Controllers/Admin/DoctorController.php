@@ -92,7 +92,8 @@ class DoctorController extends Controller
      */
     public function show(string $id)
     {
-       // return view('admin.doctors.index', compact('doctor'));
+        $doctor = Doctor::findOrFail($id);
+        return view('admin.doctors.index', compact('doctor'));
     }
 
     /**

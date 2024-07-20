@@ -34,7 +34,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-            <div class="navbar-nav flex-row">
+            <div class="navbar-nav flex-row" style="gap: 20px;">
                 <a class="animate-login-page" href="/">Pagina iniziale</a>
 
                 <div class="nav-item text-nowrap ms-2">
@@ -74,6 +74,7 @@
                         </ul>
                     </div>
                     <div class="position-sticky pt-3">
+
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.messages.index' ? 'active' : '' }}"
@@ -81,6 +82,20 @@
                                     <i class="fa-solid fa-comments"></i> Messaggi
                                 </a>
                             </li>
+                        </ul>
+                    </div>
+
+
+               
+                        <ul class="nav flex-column">
+                        
+                            <li class="nav-item">
+                                <a class="nav-link {{ Route::currentRouteName() == 'admin.reviews.index' ? 'active' : '' }}"
+                                    href="{{ route('admin.reviews.index') }}">
+                                    <i class="fa-solid fa-file-lines"></i> Le tue recensioni
+                                </a>
+                            </li>
+                       
                         </ul>
                     </div>
 
