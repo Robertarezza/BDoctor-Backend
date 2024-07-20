@@ -21,7 +21,7 @@
                                 <td>{{ $message->guest_name }}</td>
                                 <td>{{ $message->guest_surname }}</td>
                                 <td>{{ $message->guest_mail }}</td>
-                                <td>{{ $message->message }}</td>
+                                <td class="ms_text-overflow">{{ $message->message }}</td>
                             </tr>
                         @endforeach
                     </tbody>

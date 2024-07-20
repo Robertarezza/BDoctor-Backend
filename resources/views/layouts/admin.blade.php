@@ -78,7 +78,7 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.messages.index' ? 'active' : '' }}"
                                     href="{{ route('admin.messages.index') }}">
-                                    <i class="fa-solid fa-user-doctor"></i> Messaggi
+                                    <i class="fa-solid fa-comments"></i> Messaggi
                                 </a>
                             </li>
                         </ul>
