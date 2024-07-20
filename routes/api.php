@@ -31,3 +31,4 @@ Route::get('/ratings', [RatingController::class, 'index']);
 
 Route::post('/reviews', [ReviewController::class, 'store']);
 Route::post('/messages', [MessageController::class, 'store']);
+Route::post('/ratings', [RatingController::class, 'store']);
