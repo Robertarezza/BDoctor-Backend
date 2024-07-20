@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
@@ -11,10 +12,15 @@ class DoctorController extends Controller
       
     public function index(Request $request)
     {
-        $doctorsQuery = Doctor::with(['user', 'specializations']);
+        $doctorsQuery = Doctor::with(['user', 'specializations', 'ratings']);
         if($request->specialization_id) {
             $doctorsQuery->whereHas('specializations', function ($query) use ($request) {
                 $query->where('specialization_id', $request->specialization_id);
+            });
+        }
+        if($request->rating_id) {
+            $doctorsQuery->whereHas('ratings', function ($query) use ($request) {
+                $query->where('rating_id', $request->rating_id);
             });
         }
         $doctors = $doctorsQuery->get();

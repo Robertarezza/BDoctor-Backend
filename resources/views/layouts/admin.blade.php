@@ -34,7 +34,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-            <div class="navbar-nav flex-row">
+            <div class="navbar-nav flex-row" style="gap: 20px;">
                 <a class="animate-login-page" href="/">Pagina iniziale</a>
 
                 <div class="nav-item text-nowrap ms-2">
