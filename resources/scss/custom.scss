@@ -296,7 +296,17 @@ body {
     }
 }
 
-
+.ms_text-overflow {
+        max-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+.table-custom {
+        border-radius: 15px; 
+        overflow: hidden; 
+    }
 
 //altezza bottone di chiusura modale
 // .ms-closeModalDelete{
