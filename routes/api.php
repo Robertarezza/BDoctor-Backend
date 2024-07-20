@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\DoctorController;
+use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\SpecializationController;
 use Illuminate\Http\Request;
@@ -27,3 +28,4 @@ Route::get('/doctors/{id}', [DoctorController::class, 'show']);
 Route::get('/specializations', [SpecializationController::class, 'index']);
 
 Route::post('/reviews', [ReviewController::class, 'store']);
+Route::post('/messages', [MessageController::class, 'store']);
