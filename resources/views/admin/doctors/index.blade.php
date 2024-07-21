@@ -40,14 +40,18 @@
                 <div class="fw-bold">Prestazioni:</div>
                 <div> {{ $doctor->performance }} </div>
             </div>
-            {{-- specializations --}}
+            {{-- voto --}}
             <div class="rounded my-2 p-2 ms-info-bg">
-                <div class="fw-bold">Voto:</div>
-                @forelse ($doctor->ratings as $rating)
-                {{ $rating->rating }}
-                @empty
+                <div class="fw-bold">Voto medio:</div>
+                @if(isset($averageRating))
+                @if($averageRating)
+                {{ number_format($averageRating) }} / 5
+                @else
                 nessun voto presente
-                @endforelse
+                @endif
+                @else
+                Variabile $averageRating non definita
+                @endif
             </div>
             {{-- specializations --}}
             <div class="rounded my-2 p-2 ms-info-bg">

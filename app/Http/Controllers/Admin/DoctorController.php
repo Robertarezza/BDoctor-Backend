@@ -25,8 +25,9 @@ class DoctorController extends Controller
         //$doctorsArray = Doctor::all();
         // dd($userArray);
         // dd($doctorsArray);
+        $averageRating = $doctor->ratings()->avg('rating'); 
 
-        return view('admin.doctors.index', compact('user', 'doctor'));
+        return view('admin.doctors.index', compact('user', 'doctor', 'averageRating'));
     }
 
     /**
@@ -93,7 +94,9 @@ class DoctorController extends Controller
     public function show(string $id)
     {
         $doctor = Doctor::findOrFail($id);
-        return view('admin.doctors.index', compact('doctor'));
+         // Calcola la media dei voti
+        $averageRating = $doctor->ratings()->avg('rating'); // 'rating' è il campo che contiene il valore del voto
+        return view('admin.doctors.index', compact('doctor', 'averageRating' ));
     }
 
     /**
