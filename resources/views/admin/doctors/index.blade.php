@@ -44,13 +44,13 @@
             <div class="rounded my-2 p-2 ms-info-bg">
                 <div class="fw-bold">Voto medio:</div>
                 @if(isset($averageRating))
-                @if($averageRating)
-                {{ number_format($averageRating) }} / 5
+                    @if($totalRatings > 0)
+                        {{ number_format($averageRating) }} / 5  su {{ $totalRatings }} voti
+                    @else
+                        nessun voto presente
+                    @endif
                 @else
-                nessun voto presente
-                @endif
-                @else
-                Variabile $averageRating non definita
+                    Variabile $averageRating non definita
                 @endif
             </div>
             {{-- specializations --}}

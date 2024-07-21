@@ -25,9 +25,13 @@ class DoctorController extends Controller
         //$doctorsArray = Doctor::all();
         // dd($userArray);
         // dd($doctorsArray);
-        $averageRating = $doctor->ratings()->avg('rating'); 
 
-        return view('admin.doctors.index', compact('user', 'doctor', 'averageRating'));
+        //media voti dottori
+        $averageRating = $doctor->ratings()->avg('rating'); 
+        // Conta il numero totale dei voti
+        $totalRatings = $doctor->ratings()->count();
+
+        return view('admin.doctors.index', compact('user', 'doctor', 'averageRating', 'totalRatings'));
     }
 
     /**
