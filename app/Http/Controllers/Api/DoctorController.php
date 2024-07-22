@@ -19,25 +19,31 @@ class DoctorController extends Controller
             });
         }
 
-        if ($request->rating_id) {
-            $doctorsQuery->whereHas('ratings', function ($query) use ($request) {
-                $query->where('rating_id', $request->rating_id);
+       // Recupera tutti i dottori e calcola la media dei voti, arrotondando per eccesso
+       $doctors = $doctorsQuery->get()->map(function ($doctor) {
+        // Calcola la media dei voti e arrotonda per eccesso
+        $averageRating = $doctor->ratings->avg('rating');
+        $doctor->average_rating = $averageRating ? ceil($averageRating) : 0;
+        return $doctor;
+    });
+
+        // Filtra i dottori in base alla media dei voti
+        if ($request->has('average_rating')) {
+            $averageRating = $request->input('average_rating');
+            $doctors = $doctors->filter(function ($doctor) use ($averageRating) {
+                return $doctor->average_rating == $averageRating;
             });
         }
-
+        
         if ($request->review_id) {
             $doctorsQuery->whereHas('reviews', function ($query) use ($request) {
                 $query->where('review_id', $request->review_id);
             });
         }
 
-        $doctors = $doctorsQuery->get()->map(function ($doctor) {
-            $doctor->average_rating = $doctor->ratings->avg('rating');
-            return $doctor;
-        });
-
+      
         $data = [
-            "results" => $doctors
+           "results" => $doctors->values() 
         ];
 
         return response()->json($data);
@@ -51,8 +57,9 @@ class DoctorController extends Controller
             return response()->json(['message' => 'Doctor not found'], 404);
         }
 
-        // Calcola la media dei voti
-        $doctor->average_rating = $doctor->ratings->avg('rating');
+        // Calcola la media dei voti del dottore e arrotonda per eccesso
+        $averageRating = $doctor->ratings->avg('rating');
+        $doctor->average_rating = $averageRating ? ceil($averageRating) : 0;
 
         $data = [
             'results' => $doctor,
