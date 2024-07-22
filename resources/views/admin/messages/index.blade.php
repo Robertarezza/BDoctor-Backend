@@ -4,7 +4,7 @@
     <div class="container p-5">
         @if ($messages)
             <div class="row">
-                <table class="table table-borderless bg-transparent">
+                <table class="table mt-5 table-hover table-custom">
                     <thead>
                         <tr>
                             <th scope="col">Data</th>
