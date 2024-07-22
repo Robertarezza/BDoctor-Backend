@@ -28,18 +28,18 @@
             <div class="container">
 
                 @guest
-                    <a class="navbar-brand d-flex align-items-center w-100 justify-content-center" href="{{ url('/') }}">
+                    <a class="navbar-brand d-flex align-items-center w-100 justify-content-center" href="{{ url('/') }}" style="text-align: center;">
                         <div class="logo_laravel">
-                            <img src="{{ asset('img/logo.png') }}" alt="Logo Personalizzato" style="width: 62px;">
-                            <span class="text-white" style="font-size: smaller; font-weight: 900;">B-Doctor</span>
+                            <img src="{{ asset('img/logo-2.png') }}" alt="Logo Personalizzato"  style="width: 50%;">
+                            <span class="text-white" style="font-size: smaller; font-weight: 900;"></span>
                         </div>
                         {{-- config('app.name', 'Laravel') --}}
                     </a>
                 @else
-                    <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+                    <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}" style="margin-top: 4px">
                         <div class="logo_laravel">
-                            <img src="{{ asset('img/logo.png') }}" alt="Logo Personalizzato" style="width: 62px;">
-                            <span class="text-white" style="font-size: smaller; font-weight: 900;">B-Doctor</span>
+                            <img src="{{ asset('img/logo-2.png') }}" alt="Logo Personalizzato" style="width: 50%;">
+                            <span class="text-white" style="font-size: smaller; font-weight: 900;"></span>
                         </div>
                         {{-- config('app.name', 'Laravel') --}}
                     </a>
@@ -72,7 +72,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: white;">
                                     {{ Auth::user()->name }}
                                 </a>
 

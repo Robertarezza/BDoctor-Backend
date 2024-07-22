@@ -50,7 +50,7 @@
                         nessun voto presente
                     @endif
                 @else
-                    Variabile $averageRating non definita
+                    nessun voto presente
                 @endif
             </div>
             {{-- specializations --}}
