@@ -24,24 +24,24 @@ class MessageController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
+    { 
         //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Message $message)
+    public function store(Request $request)
     {
-        return view('admin.messages.show', compact('message'));
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Message $message)
     {
-        //
+        return view('admin.messages.show', compact('message'));
     }
 
     /**
