@@ -11,7 +11,7 @@ class DoctorController extends Controller
 {
     public function index(Request $request)
     {
-        $doctorsQuery = Doctor::with(['user', 'specializations', 'ratings']);
+        $doctorsQuery = Doctor::with(['user', 'specializations', 'ratings', 'reviews']);
 
         if ($request->specialization_id) {
             $doctorsQuery->whereHas('specializations', function ($query) use ($request) {
@@ -22,6 +22,12 @@ class DoctorController extends Controller
         if ($request->rating_id) {
             $doctorsQuery->whereHas('ratings', function ($query) use ($request) {
                 $query->where('rating_id', $request->rating_id);
+            });
+        }
+
+        if ($request->review_id) {
+            $doctorsQuery->whereHas('reviews', function ($query) use ($request) {
+                $query->where('review_id', $request->review_id);
             });
         }
 
@@ -39,7 +45,7 @@ class DoctorController extends Controller
 
     public function show(string $doctor_id)
     {
-        $doctor = Doctor::with(['user', 'specializations', 'ratings'])->find($doctor_id);
+        $doctor = Doctor::with(['user', 'specializations', 'ratings', 'reviews'])->find($doctor_id);
 
         if (!$doctor) {
             return response()->json(['message' => 'Doctor not found'], 404);
