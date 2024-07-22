@@ -45,7 +45,7 @@ class StoreMessageRequest extends FormRequest
             'guest_surname.required' => 'Si prega di inserire il proprio cognome',
             'guest_mail.required' => 'Si prega di inserire la vostra mail',
             'guest_mail.email' => 'E\' stata inserita una mail non valida',
-            'message.required' => 'Si prega di inserire la vostra recensione',
+            'message.required' => 'Si prega di inserire un messaggio',
         ];
     }
 }
