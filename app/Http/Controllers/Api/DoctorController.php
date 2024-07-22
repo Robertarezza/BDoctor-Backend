@@ -19,11 +19,11 @@ class DoctorController extends Controller
             });
         }
 
-       // Recupera tutti i dottori e calcola la media dei voti, arrotondando per eccesso
+       // Recupera tutti i dottori e calcola la media dei voti
        $doctors = $doctorsQuery->get()->map(function ($doctor) {
-        // Calcola la media dei voti e arrotonda per eccesso
         $averageRating = $doctor->ratings->avg('rating');
-        $doctor->average_rating = $averageRating ? ceil($averageRating) : 0;
+        // Arrotonda al numero intero più vicino
+        $doctor->average_rating = $averageRating ? round($averageRating) : 0;
         return $doctor;
     });
 
@@ -34,7 +34,7 @@ class DoctorController extends Controller
                 return $doctor->average_rating == $averageRating;
             });
         }
-        
+
         if ($request->review_id) {
             $doctorsQuery->whereHas('reviews', function ($query) use ($request) {
                 $query->where('review_id', $request->review_id);
@@ -57,9 +57,10 @@ class DoctorController extends Controller
             return response()->json(['message' => 'Doctor not found'], 404);
         }
 
-        // Calcola la media dei voti del dottore e arrotonda per eccesso
-        $averageRating = $doctor->ratings->avg('rating');
-        $doctor->average_rating = $averageRating ? ceil($averageRating) : 0;
+         // Calcola la media dei voti del dottore
+         $averageRating = $doctor->ratings->avg('rating');
+         // Arrotondamento al numero intero più vicino
+         $doctor->average_rating = $averageRating ? round($averageRating) : 0;
 
         $data = [
             'results' => $doctor,
