@@ -18,11 +18,13 @@ class RatingController extends Controller
         ]);
     }
 
-    public function store(Request $request){
+    public function store(StoreRatingRequest $request){
 
+       
+        $data = $request->validated();
         $profile_vote = Doctor::find($request->doctor_id);
         $profile_vote->ratings()->attach($request->rating_id);
-
+        $profile_vote->fill($data);
         return response()->json([
             'success' => true,
             'message' => 'Voto salvato con successo',
