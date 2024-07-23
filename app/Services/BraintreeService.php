@@ -2,12 +2,15 @@
 
 namespace App\Services;
 
+// braintree class in vendor
 use Braintree\Gateway;
 
 class BraintreeService
 {
+    // set a protected variable
     protected $gateway;
 
+    // construct with the key's
     public function __construct()
     {
         $this->gateway = new Gateway([
@@ -23,6 +26,7 @@ class BraintreeService
         return $this->gateway;
     }
 
+    // generates a token for the client session
     public function generateClientToken()
     {
         return $this->gateway->clientToken()->generate();

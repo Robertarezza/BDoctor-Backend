@@ -2,27 +2,35 @@
 <html>
 <head>
     <title>Checkout</title>
+    {{-- braintree cdn --}}
     <script src="https://js.braintreegateway.com/web/dropin/1.27.0/js/dropin.min.js"></script>
 </head>
 <body>
+    {{-- if succes we print the message succes and a button to return at the home page --}}
     @if (session('success'))
         <div>{{ session('success') }}</div>
         <a href="{{ route('admin.doctors.index') }}">Torna alla home</a>
     @endif
 
+    {{-- else we print an error message --}}
     @if (session('error'))
         <div>{{ session('error') }}</div>
     @endif
 
+    {{-- form with payment infos --}}
     <form id="checkout-form" action="{{ route('admin.processPayment') }}" method="post">
         @csrf
         <div id="dropin-container"></div>
         <button type="submit">Pay</button>
     </form>
 
+
     <script>
         var form = document.querySelector('#checkout-form');
+        // generated client token
         var clientToken = "{{ $clientToken }}";
+        // console.log(clientToken);
+
 
         braintree.dropin.create({
             authorization: clientToken,
@@ -37,7 +45,7 @@
                         return;
                     }
 
-                    // Inserisci il nonce nel form e invia il form
+                    // create the nonce with the inputs
                     var nonceInput = document.createElement('input');
                     nonceInput.setAttribute('type', 'hidden');
                     nonceInput.setAttribute('name', 'payment_method_nonce');
