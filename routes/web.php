@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\PaymentsController;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -23,8 +24,8 @@ Route::get('/', function () {
     return view('welcome');})->name('welcome');
 
 
-
-Route::middleware('auth')
+    
+    Route::middleware('auth')
     ->prefix('admin') // Prefisso nell'url delle rotte di questo gruppo
     ->name('admin.') // inizio di ogni nome delle rotte del gruppo
     ->group(function () {
@@ -32,6 +33,8 @@ Route::middleware('auth')
         Route::resource('/doctors', DoctorController::class);
         Route::resource('/messages', MessageController::class);
         Route::resource('reviews', ReviewController::class)->except([ 'store', 'create']);
+        Route::get('/checkout', [PaymentsController::class, 'showCheckout'])->name('checkout');
+        Route::post('/process-payment', [PaymentsController::class, 'processPayment'])->name('processPayment');
     });
 
 require __DIR__ . '/auth.php';
