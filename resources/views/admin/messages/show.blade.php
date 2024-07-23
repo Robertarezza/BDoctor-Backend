@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-5">
     <h1 class="text-center text-light">Dettaglio della Messaggio</h1>
-    <div class="card mt-3 shadow-sm" style="width: 100%;">
+    <div class="card card-message mt-3 shadow-sm" style="width: 100%;">
         <div class="card-body">
             <h5 class=" text-capitalize fw-bold mt-3">{{ $message->guest_name }}</h5>
             <p class="text-muted">Indirizzo mail: <strong>{{ $message->guest_mail }}</strong></p>
