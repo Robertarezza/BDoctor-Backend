@@ -29,7 +29,7 @@
                 <td class="text-center align-middle">
                     <div class="d-flex justify-content-center align-items-center gap-2">
                         <a href="{{ route('admin.reviews.show', ['review' => $review->id]) }}" class="btn btn-outline-info" title="Dettagli">
-                            <i class="fa-solid fa-circle-info"></i>
+                        <i class="fa-solid fa-eye"></i>
                         </a>
                     </div>
                 </td>
