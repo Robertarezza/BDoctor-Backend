@@ -78,7 +78,7 @@ class SponsorshipController extends Controller
         });
     
         // Reindirizza alla pagina delle sponsorizzazioni con un messaggio di successo
-        return redirect()->route('admin.sponsorships.index')->with('message', 'Sponsorizzazione attivata con successo!');
+        return redirect()->route('admin.checkout');
     }
 
     /**

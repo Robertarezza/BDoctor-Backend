@@ -43,7 +43,7 @@ class PaymentsController extends Controller
 
         if ($result->success) {
             // returns a succes message with the ID of the transaction
-            return redirect()->back()->with('success', 'Transaction ID: ' . $result->transaction->id);
+            return redirect()->route('admin.doctors.index')->with('message', 'Transaction ID: ' . $result->transaction->id);
         } else {
             // returns the error message
             return redirect()->back()->with('error', 'Error: ' . $result->message);
