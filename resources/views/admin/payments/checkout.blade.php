@@ -6,6 +6,9 @@
     <script src="https://js.braintreegateway.com/web/dropin/1.27.0/js/dropin.min.js"></script>
 </head>
 <body>
+    @extends('layouts.admin')
+
+    @section('content')
     {{-- if succes we print the message succes and a button to return at the home page --}}
     @if (session('success'))
         <div>{{ session('success') }}</div>
@@ -18,7 +21,7 @@
     @endif
 
     {{-- form with payment infos --}}
-    <form id="checkout-form" action="{{ route('admin.processPayment') }}" method="post">
+    <form id="checkout-form" action="{{ route('admin.processPayment') }}" method="post" style="width: 40%; margin: 0 auto;" class="mt-5">
         @csrf
         <div id="dropin-container"></div>
         <button type="submit">Pay</button>
@@ -59,3 +62,5 @@
     </script>
 </body>
 </html>
+    @endsection
+    
