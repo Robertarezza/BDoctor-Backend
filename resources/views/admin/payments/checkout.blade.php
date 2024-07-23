@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Checkout</title>
-    {{-- braintree cdn --}}
-    <script src="https://js.braintreegateway.com/web/dropin/1.27.0/js/dropin.min.js"></script>
-</head>
-<body>
-    @extends('layouts.admin')
+@extends('layouts.admin')
 
-    @section('content')
+@section('content')
     {{-- if succes we print the message succes and a button to return at the home page --}}
     @if (session('success'))
         <div>{{ session('success') }}</div>
@@ -21,10 +13,10 @@
     @endif
 
     {{-- form with payment infos --}}
-    <form id="checkout-form" action="{{ route('admin.processPayment') }}" method="post" style="width: 40%; margin: 0 auto;" class="mt-5">
+    <form id="checkout-form" action="{{ route('admin.processPayment') }}" method="post" class="w-50 m-auto mt-5">
         @csrf
-        <div id="dropin-container"></div>
-        <button type="submit">Pay</button>
+        <div id="dropin-container" class=""></div>
+        <button type="submit" class="btn btn-primary">Pay</button>
     </form>
 
 
@@ -38,11 +30,11 @@
         braintree.dropin.create({
             authorization: clientToken,
             container: '#dropin-container'
-        }, function (createErr, instance) {
-            form.addEventListener('submit', function (event) {
+        }, function(createErr, instance) {
+            form.addEventListener('submit', function(event) {
                 event.preventDefault();
 
-                instance.requestPaymentMethod(function (err, payload) {
+                instance.requestPaymentMethod(function(err, payload) {
                     if (err) {
                         console.log('Error:', err);
                         return;
@@ -60,7 +52,4 @@
             });
         });
     </script>
-</body>
-</html>
-    @endsection
-    
+@endsection
