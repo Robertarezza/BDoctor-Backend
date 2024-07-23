@@ -4,7 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ReviewController;
-
+use App\Http\Controllers\Admin\SponsorshipController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +32,9 @@ Route::middleware('auth')
         Route::resource('/doctors', DoctorController::class);
         Route::resource('/messages', MessageController::class);
         Route::resource('reviews', ReviewController::class)->except([ 'store', 'create']);
+
+        Route::resource('/sponsorships', SponsorshipController::class);
+
     });
 
 require __DIR__ . '/auth.php';

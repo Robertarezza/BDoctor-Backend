@@ -101,6 +101,16 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="position-sticky pt-3">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link {{ Route::currentRouteName() == 'admin.sponsorships.index' ? 'active' : '' }}"
+                                    href="{{ route('admin.sponsorships.index') }}">
+                                    <i class="fa-solid fa-file-lines"></i> Sponsorizzati
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                     <!-- <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
