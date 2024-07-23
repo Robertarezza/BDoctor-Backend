@@ -50,6 +50,7 @@ body {
 // Colore di sfondo per il link attivo nella navbar
 .nav-item .active {
     background-color: #0056b3;
+    color: #cccccc;
 }
 
 // Colore di sfondo e altezza per la sidebar personalizzata
@@ -307,6 +308,30 @@ body {
         border-radius: 15px; 
         overflow: hidden; 
     }
+
+
+/* Rimuove l'effetto di hover zoom per la card del messaggio */
+.card-message {
+    transition: none; 
+    transform: none; 
+}
+
+.card-message:hover {
+    transform: none; 
+    box-shadow: none;
+}
+
+/* Rimuove l'effetto di hover zoom per la card della recensione */
+.card-review {
+    transition: none; 
+    transform: none; 
+}
+
+.card-review:hover {
+    transform: none; 
+    box-shadow: none; 
+}
+
 
 //altezza bottone di chiusura modale
 // .ms-closeModalDelete{

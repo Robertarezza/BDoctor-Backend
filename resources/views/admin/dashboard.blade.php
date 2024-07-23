@@ -26,7 +26,7 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h3 class="card-title">{{ $messages->guest_name }} {{ $messages->guest_surname }}</h3>
-                    <p class="card-text">{{ $messages->guest_mail }}</p>
+                    <p class="card-text">Email: {{ $reviews->guest_mail }}</p>
                     <hr>
                     <p><strong>Data:</strong> {{ \Carbon\Carbon::parse($messages->created_at)->format('d-m-Y H:i') }}</p>
                     <p><strong>Messaggio:</strong> {{ $messages->message }}</p>
@@ -46,10 +46,10 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h3 class="card-title">{{ ucfirst(strtolower($reviews->guest_name)) }}</h3>
-                    <p class="card-text">{{ $reviews->review }}</p>
+                    <p class="card-text">Email: {{ $reviews->guest_mail }}</p>
                     <hr>
                     <p><strong>Data:</strong> {{ $reviews->created_at->format('d-m-Y H:i') }}</p>
-                    <p><strong>Email:</strong> {{ $reviews->guest_mail }}</p>
+                    <p><strong>Recensione:</strong> {{ $reviews->review }}</p>
                 </div>
             </div>
         </div>
