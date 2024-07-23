@@ -1,11 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-
-
 {{-- CONTAINER --}}
-<div class="container">
-<h1 class="text-center text-light">Modifica il tuo profilo</h1>
+<div class="container mt-5">
+    <h1 class="text-center text-light mb-4">Modifica il tuo profilo</h1>
     <div class="row justify-content-center">
         <div class="col-md-8">
             {{-- FORM --}}
@@ -29,7 +27,7 @@
                 {{-- SPECIALIZATIONS --}}
                 <div class="mb-3">
                     <label for="specialization" class="form-label text-info">Specializzazioni *</label>
-                    <select name="specialization[]" id="specialization" class="form-control @error('specialization') is-invalid @enderror d-none" multiple>
+                    <select name="specialization[]" id="specialization" class="form-select @error('specialization') is-invalid @enderror" multiple>
                         @foreach ($specializations as $specialization)
                         <option @selected(in_array($specialization->id, old('specialization', $doctor->specializations->pluck('id')->toArray()))) value="{{ $specialization->id }}">
                             {{ $specialization->title }}
@@ -92,7 +90,7 @@
                 </div>
                 {{-- /CV --}}
 
-                <button type="submit" class="btn btn-primary">Salva</button>
+                <button type="submit" class="btn btn-primary w-100">Salva</button>
             </form>
             {{-- /FORM --}}
             @else
@@ -104,7 +102,7 @@
             {{-- PHOTO PREVIEW --}}
             <div class="mb-3">
                 @if ($doctor->photo)
-                <img class="{{ $doctor->photo ? '' : 'd-none' }} doctor-photo img-thumbnail" id="photo-preview" src="{{ $doctor->photo ? asset('storage/' . $doctor->photo) : '' }}" alt="Doctor Photo" style="max-width: 100%; height: auto; object-fit: cover;">
+                <img class="doctor-photo img-thumbnail" id="photo-preview" src="{{ $doctor->photo ? asset('storage/' . $doctor->photo) : '' }}" alt="Doctor Photo">
                 @else
                 <p>Nessuna immagine di copertina presente</p>
                 @endif
@@ -114,7 +112,7 @@
             {{-- CV PREVIEW --}}
             <div class="mb-3">
                 @if ($doctor->CV)
-                <embed class="{{ $doctor->CV ? '' : 'd-none' }} doctor-cv" id="cv-preview" src="{{ $doctor->CV ? asset('storage/' . $doctor->CV) : '' }}" type="application/pdf" style="width: 70%; height: 229px; object-fit: contain;">
+                <embed class="doctor-cv" id="cv-preview" src="{{ $doctor->CV ? asset('storage/' . $doctor->CV) : '' }}" type="application/pdf">
                 @else
                 <p>Nessun CV presente</p>
                 @endif
@@ -122,7 +120,7 @@
             {{-- /CV PREVIEW --}}
         </div>
     </div>
-    <p class="text-light">* questi sono obbligatori</p>
+    <p class="text-light mt-3">* questi sono obbligatori</p>
 </div>
 {{-- /CONTAINER --}}
 
@@ -130,9 +128,9 @@
 <script>
     // https://github.com/habibmhamadi/multi-select-tag
     new MultiSelectTag('specialization', {
-        rounded: true, // default true
-        shadow: false, // default false
-        placeholder: 'Search', // default Search...
+        rounded: true,
+        shadow: false,
+        placeholder: 'Search',
         tagColor: {
             textColor: '#327b2c',
             borderColor: '#92e681',
@@ -144,6 +142,4 @@
     });
 </script>
 {{-- /SCRIPT FOR MULTISELECT --}}
-
-
 @endsection

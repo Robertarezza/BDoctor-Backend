@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\PaymentsController;
+use App\Http\Controllers\Admin\SponsorshipController;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -24,10 +25,10 @@ Route::get('/', function () {
     return view('welcome');})->name('welcome');
 
 
-    
+
     Route::middleware('auth')
-    ->prefix('admin') // Prefisso nell'url delle rotte di questo gruppo
-    ->name('admin.') // inizio di ogni nome delle rotte del gruppo
+    ->prefix('admin') // Prefisso nell'URL delle rotte di questo gruppo
+    ->name('admin.') // Inizio di ogni nome delle rotte del gruppo
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('/doctors', DoctorController::class);
@@ -37,6 +38,7 @@ Route::get('/', function () {
         Route::get('/checkout', [PaymentsController::class, 'showCheckout'])->name('checkout');
         // route with method post for the validation of the payment
         Route::post('/process-payment', [PaymentsController::class, 'processPayment'])->name('processPayment');
+        Route::resource('/sponsorships', SponsorshipController::class);
     });
 
 require __DIR__ . '/auth.php';

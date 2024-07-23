@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8 mt-4">
+        <div class="col-md-8 col-lg-6 mt-4">
             <div class="card bg-light shadow-sm">
                 <div class="card-body">
                     @if (session('status'))
@@ -20,45 +20,40 @@
 <div class="container mt-4">
     <div class="row">
         <!-- Messaggi -->
-        @if ($messages)
-        <div class="col-md-6 mb-4">
+        <div class="col-12 col-md-6 mb-4">
+            @if ($messages)
             <h2 class="text-center mb-4 text-light">L'ultimo messaggio ricevuto</h2>
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h3 class="card-title">{{ $messages->guest_name }} {{ $messages->guest_surname }}</h3>
-                    <p class="card-text">{{ $messages->guest_mail }}</p>
+                    <p class="card-text">Email: {{ $messages->guest_mail }}</p>
                     <hr>
                     <p><strong>Data:</strong> {{ \Carbon\Carbon::parse($messages->created_at)->format('d-m-Y H:i') }}</p>
                     <p><strong>Messaggio:</strong> {{ $messages->message }}</p>
                 </div>
             </div>
-        </div>
-        @else
-        <div class="col-md-6 mb-4">
+            @else
             <h2 class="text-center mb-4 text-light">Nessun messaggio ricevuto</h2>
+            @endif
         </div>
-        @endif
 
         <!-- Recensioni -->
-        @if ($reviews)
-        <div class="col-md-6 mb-4">
+        <div class="col-12 col-md-6 mb-4">
+            @if ($reviews)
             <h2 class="text-center mb-4 text-light">La tua ultima recensione</h2>
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h3 class="card-title">{{ ucfirst(strtolower($reviews->guest_name)) }}</h3>
-                    <p class="card-text">{{ $reviews->review }}</p>
+                    <p class="card-text">Email: {{ $reviews->guest_mail }}</p>
                     <hr>
                     <p><strong>Data:</strong> {{ $reviews->created_at->format('d-m-Y H:i') }}</p>
-                    <p><strong>Email:</strong> {{ $reviews->guest_mail }}</p>
+                    <p><strong>Recensione:</strong> {{ $reviews->review }}</p>
                 </div>
+            @else
+            <h2 class="text-center mb-4 text-light">Nessuna recensione presente</h2>
+            @endif
             </div>
         </div>
-        @else
-        <div class="col-md-6 mb-4">
-            <h2 class="text-center mb-4 text-light">Nessuna recensione presente</h2>
-        </div>
-        @endif
     </div>
 </div>
-
 @endsection
