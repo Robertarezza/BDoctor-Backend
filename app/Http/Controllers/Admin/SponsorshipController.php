@@ -8,6 +8,7 @@ use App\Models\Doctor;
 use App\Models\Sponsorship;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SponsorshipController extends Controller
 {
@@ -26,56 +27,60 @@ class SponsorshipController extends Controller
      */
     public function create()
     {
-     
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $user = Auth::user();
-    $doctor = Doctor::where('user_id', $user->id)->first();
-
-    if (!$doctor instanceof Doctor) {
-        return redirect()->route('admin.sponsorships.index')->with('error', 'Utente non autorizzato');
-    }
-
-    $sponsorshipId = $request->input('sponsorship_id');
-    $sponsorship = Sponsorship::findOrFail($sponsorshipId);
-
-    $startDate = Carbon::now();
-    $newEndDate = $startDate->copy()->addHours($sponsorship->duration);
-
-    // Trova tutte le sponsorizzazioni attive del dottore
-    $existingSponsorships = $doctor->sponsorships()
-        ->wherePivot('end_date', '>=', $startDate)
-        ->get();
-
-    if (!$existingSponsorships->isEmpty()) {
-        // Aggiorna la data di fine di tutte le sponsorizzazioni attive
-        foreach ($existingSponsorships as $existingSponsorship) {
-            $currentEndDate = Carbon::parse($existingSponsorship->pivot->end_date);
-            $updatedEndDate = $currentEndDate->copy()->addHours($sponsorship->duration);
-
-            $doctor->sponsorships()->updateExistingPivot($existingSponsorship->id, [
-                //'start_date' => $currentEndDate,
-                'end_date' => $updatedEndDate,
-            ]);
-        }
-    }
-
- // Aggiungi la nuova sponsorizzazione
- $doctor->sponsorships()->attach($sponsorshipId, [
-    'start_date' => $startDate,
-    'end_date' => $newEndDate,
-]);
-
-   
-
-    return redirect()->route('admin.sponsorships.index')->with('message', 'Sponsorizzazione attivata con successo!');
-}
+    {
+        // Ottieni l'utente autenticato
+        $user = Auth::user();
+        // Trova il dottore associato all'utente
+        $doctor = Doctor::where('user_id', $user->id)->first();
     
+        // Verifica se l'utente è un dottore autorizzato
+        if (!$doctor instanceof Doctor) {
+            return redirect()->route('admin.sponsorships.index')->with('error', 'Utente non autorizzato');
+        }
+    
+        // Ottieni l'ID della sponsorizzazione dal modulo di richiesta
+        $sponsorshipId = $request->input('sponsorship_id');
+        // Trova la sponsorizzazione nel database o fallisci se non trovata
+        $sponsorship = Sponsorship::findOrFail($sponsorshipId);
+    
+        // Imposta la data di inizio alla data e ora corrente
+        $startDate = Carbon::now();
+        // Calcola la nuova data di fine in base alla durata della sponsorizzazione
+        $newEndDate = $startDate->copy()->addHours($sponsorship->duration);
+    
+        // Esegui tutte le operazioni nel contesto di una transazione
+        DB::transaction(function () use ($doctor, $sponsorship, $startDate, $newEndDate) {
+            // Trova la prima sponsorizzazione attiva del dottore
+            $existingSponsorship = $doctor->sponsorships()
+                ->wherePivot('end_date', '>=', $startDate)
+                ->first();
+    
+            // Se esiste una sponsorizzazione attiva, aggiorna la data di fine
+            if ($existingSponsorship) {
+                $updatedEndDate = Carbon::parse($existingSponsorship->pivot->end_date)->addHours($sponsorship->duration);
+    
+                $doctor->sponsorships()->updateExistingPivot($existingSponsorship->id, [
+                    'end_date' => $updatedEndDate,
+                ]);
+            }
+    
+            // Aggiungi la nuova sponsorizzazione per il dottore
+            $doctor->sponsorships()->attach($sponsorship->id, [
+                'start_date' => $startDate,
+                'end_date' => $newEndDate,
+            ]);
+        });
+    
+        // Reindirizza alla pagina delle sponsorizzazioni con un messaggio di successo
+        return redirect()->route('admin.sponsorships.index')->with('message', 'Sponsorizzazione attivata con successo!');
+    }
+
     /**
      * Display the specified resource.
      */
