@@ -24,17 +24,17 @@ Route::get('/', function () {
 
 
 
-Route::middleware('auth')
-    ->prefix('admin') // Prefisso nell'url delle rotte di questo gruppo
-    ->name('admin.') // inizio di ogni nome delle rotte del gruppo
+    Route::middleware('auth')
+    ->prefix('admin') // Prefisso nell'URL delle rotte di questo gruppo
+    ->name('admin.') // Inizio di ogni nome delle rotte del gruppo
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('/doctors', DoctorController::class);
         Route::resource('/messages', MessageController::class);
-        Route::resource('reviews', ReviewController::class)->except([ 'store', 'create']);
+        Route::resource('reviews', ReviewController::class)->except(['store', 'create']);
 
         Route::resource('/sponsorships', SponsorshipController::class);
-
+      
     });
 
 require __DIR__ . '/auth.php';
