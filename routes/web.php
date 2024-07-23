@@ -4,7 +4,9 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\PaymentsController;
 use App\Http\Controllers\Admin\SponsorshipController;
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,10 +33,12 @@ Route::get('/', function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('/doctors', DoctorController::class);
         Route::resource('/messages', MessageController::class);
-        Route::resource('reviews', ReviewController::class)->except(['store', 'create']);
-
+        Route::resource('reviews', ReviewController::class)->except([ 'store', 'create']);
+        // route for the page of checkout
+        Route::get('/checkout', [PaymentsController::class, 'showCheckout'])->name('checkout');
+        // route with method post for the validation of the payment
+        Route::post('/process-payment', [PaymentsController::class, 'processPayment'])->name('processPayment');
         Route::resource('/sponsorships', SponsorshipController::class);
-      
     });
 
 require __DIR__ . '/auth.php';

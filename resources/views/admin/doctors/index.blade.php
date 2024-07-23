@@ -117,4 +117,9 @@
     </div>
 </div>
 @endif
+
+{{-- braintree button to checkout --}}
+<a href="{{ route('admin.checkout') }}">
+    <button type="button">Go to Checkout</button>
+</a>
 @endsection
