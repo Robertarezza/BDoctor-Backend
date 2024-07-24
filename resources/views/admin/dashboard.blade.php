@@ -54,16 +54,19 @@
                 @endif
             </div>
         </div>
+
         {{-- Visualizza la sponsorizzazione attiva con la data di fine più lontana --}}
-    <h2>Sponsorizzazione Attiva</h2>
-    @if (!$activeSponsorship)
-        <p>Non hai sponsorizzazioni attive.</p>
-    @else
-        <div>
-            Sponsorizzazione ID: {{ $activeSponsorship->id }} <br>
-            Fine: {{ $activeSponsorship->pivot->end_date }}
+        <div class="">
+            <h2 class="mb-4 text-light">Sponsorizzazione</h2>
+            @if (!$activeSponsorship)
+            <p>Non hai sponsorizzazioni attive.</p>
+            @else
+            <div class="bg-light border rounded p-2">
+              Hai una sposorizzazione attina fino al: 
+               <p>{{ $activeSponsorship->pivot->end_date }}</p> 
+            </div>
+            @endif
         </div>
-    @endif
     </div>
 </div>
 @endsection
