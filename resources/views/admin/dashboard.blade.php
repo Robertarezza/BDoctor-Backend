@@ -4,14 +4,24 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6 mt-4">
-            <div class="card bg-light shadow-sm">
-                <div class="card-body">
+            <div class="card bg-light shadow-sm card-review">
+                <div class="card-body text-center">
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                     </div>
                     @endif
-                    <h1 class="text-capitalize text-center">Benvenuto! Dr. {{ $user->name }} {{ $user->surname }}</h1>
+                    <h1 class="text-capitalize">Benvenuto! Dr. {{ $user->name }} {{ $user->surname }}</h1>
+                    <div class="mt-2 text-primary small">
+                        {{-- Sponsorizzazione Attiva --}}
+                        @if (!$activeSponsorship)
+                        <p>Non hai sponsorizzazioni attive.</p>
+                        @else
+                        <p>Hai una sponsorizzazione attiva fino al: 
+                           <span class="font-weight-bold">{{ \Carbon\Carbon::parse($activeSponsorship->pivot->end_date)->format('d-m-Y') }}</span>
+                        </p>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
@@ -49,22 +59,9 @@
                     <p><strong>Data:</strong> {{ $reviews->created_at->format('d-m-Y H:i') }}</p>
                     <p><strong>Recensione:</strong> {{ $reviews->review }}</p>
                 </div>
-                @else
-                <h2 class="text-center mb-4 text-light">Nessuna recensione presente</h2>
-                @endif
             </div>
-        </div>
-
-        {{-- Visualizza la sponsorizzazione attiva con la data di fine più lontana --}}
-        <div class="">
-            <h2 class="mb-4 text-light">Sponsorizzazione</h2>
-            @if (!$activeSponsorship)
-            <p>Non hai sponsorizzazioni attive.</p>
             @else
-            <div class="bg-light border rounded p-2">
-              Hai una sposorizzazione attina fino al: 
-               <p>{{ $activeSponsorship->pivot->end_date }}</p> 
-            </div>
+            <h2 class="text-center mb-4 text-light">Nessuna recensione presente</h2>
             @endif
         </div>
     </div>
