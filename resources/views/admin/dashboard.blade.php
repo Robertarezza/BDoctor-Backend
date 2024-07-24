@@ -54,21 +54,16 @@
                 @endif
             </div>
         </div>
-        {{-- Visualizza le sponsorizzazioni attive --}}
-        <h2>Sponsorizzazioni Attive</h2>
-        @if ($activeSponsorships->isEmpty())
+        {{-- Visualizza la sponsorizzazione attiva con la data di fine più lontana --}}
+    <h2>Sponsorizzazione Attiva</h2>
+    @if (!$activeSponsorship)
         <p>Non hai sponsorizzazioni attive.</p>
-        @else
-        <ul>
-            @foreach ($activeSponsorships as $sponsorship)
-            <li>
-                Sponsorizzazione ID: {{ $sponsorship->id }} <br>
-                Inizio: {{ $sponsorship->pivot->start_date }} <br>
-                Fine: {{ $sponsorship->pivot->end_date }}
-            </li>
-            @endforeach
-        </ul>
-        @endif
+    @else
+        <div>
+            Sponsorizzazione ID: {{ $activeSponsorship->id }} <br>
+            Fine: {{ $activeSponsorship->pivot->end_date }}
+        </div>
+    @endif
     </div>
 </div>
 @endsection

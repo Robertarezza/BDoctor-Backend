@@ -21,11 +21,12 @@ class DashboardController extends Controller
             return redirect()->route('admin.dashboard')->with('error', 'Dottore non trovato.');
         }
 
-        // Recupera le sponsorizzazioni attive
-        $activeSponsorships = $doctor->sponsorships()
-            ->wherePivot('end_date', '>=', now())
-            ->wherePivot('start_date', '<=', now()) // Assicurati di includere anche la data di inizio
-            ->get();
+      // Recupera la sponsorizzazione attiva con la data di fine più lontana
+      $activeSponsorship = $doctor->sponsorships()
+      ->wherePivot('end_date', '>=', now())
+      ->wherePivot('start_date', '<=', now()) // Assicurati di includere anche la data di inizio
+      ->orderBy('end_date', 'desc')
+      ->first();
 
         // Altri dati per la vista
         $reviews = Review::where('doctor_id', $user->id)->orderByDesc('created_at')->first();
@@ -35,7 +36,7 @@ class DashboardController extends Controller
             'user' => $user,
             'reviews' => $reviews,
             'messages' => $messages,
-            'activeSponsorships' => $activeSponsorships
+            'activeSponsorship' => $activeSponsorship
         ]);
     }
 
