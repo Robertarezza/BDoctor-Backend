@@ -5,7 +5,7 @@
 {{-- CONTAINER --}}
 <div class="container ms-container-index">
     @if (session('message'))
-    <div class="alert alert-success">
+    <div class="alert alert-success custom-success-message">
         {{ session('message') }}
     </div>
     @endif

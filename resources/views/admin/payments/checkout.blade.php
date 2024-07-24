@@ -1,25 +1,28 @@
 @extends('layouts.admin')
 
 @section('content')
-    {{-- if succes we print the message succes and a button to return at the home page --}}
+    {{-- if success we print the message success and a button to return to the home page --}}
     @if (session('success'))
-        <div>{{ session('success') }}</div>
-        <a href="{{ route('admin.doctors.index') }}">Torna alla home</a>
+        <div class="alert alert-success text-center mt-4 custom-success-message">
+            {{ session('success') }}
+            <a href="{{ route('admin.doctors.index') }}" class="btn btn-primary mt-3">Torna alla home</a>
+        </div>
     @endif
 
     {{-- else we print an error message --}}
     @if (session('error'))
-        <div>{{ session('error') }}</div>
+        <div class="alert alert-danger text-center mt-4">
+            {{ session('error') }}
+        </div>
     @endif
 
     {{-- form with payment infos --}}
-    <form id="checkout-form" action="{{ route('admin.processPayment') }}" method="post" class="w-50 m-auto mt-5">
+    <form id="checkout-form" action="{{ route('admin.processPayment') }}" method="post" class="w-50 m-auto mt-5 p-4 border rounded shadow-sm bg-light">
         @csrf
         <input type="hidden" name="id" value="{{ $sponsorship->id }}">
-        <div id="dropin-container" class=""></div>
-        <button type="submit" class="btn btn-primary">Pay</button>
+        <div id="dropin-container" class="mb-3"></div>
+        <button type="submit" class="btn btn-primary btn-block">Paga</button>
     </form>
-
 
     <script>
         var form = document.querySelector('#checkout-form');
@@ -27,10 +30,14 @@
         var clientToken = "{{ $clientToken }}";
         // console.log(clientToken);
 
-
         braintree.dropin.create({
             authorization: clientToken,
-            container: '#dropin-container'
+            container: '#dropin-container',
+            // translations: {
+            //     "card-number": "Numero di Carta",
+            //     "expiration-date": "Data di Scadenza",
+            //     "cvv": "CVV"
+            // }
         }, function(createErr, instance) {
             form.addEventListener('submit', function(event) {
                 event.preventDefault();

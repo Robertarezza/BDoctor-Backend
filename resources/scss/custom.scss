@@ -337,6 +337,13 @@ body {
     box-shadow: none; 
 }
 
+.custom-success-message {
+    background-color: rgba(40, 167, 69, 0.8); /* Add transparency to the success message background */
+    border-color: rgba(40, 167, 69, 0.8); /* Add transparency to the border */
+    margin-top: 20px; /* Additional margin to separate from other elements */
+    margin-bottom: 20px; /* Additional margin to separate from other elements */
+}
+
 
 //altezza bottone di chiusura modale
 // .ms-closeModalDelete{

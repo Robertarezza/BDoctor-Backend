@@ -86,7 +86,7 @@ class PaymentsController extends Controller
             });
 
             // Reindirizza alla pagina dei dottori con un messaggio di successo
-            return redirect()->route('admin.doctors.index')->with('message', 'Transaction ID: ' . $result->transaction->id . ' Importo: ' . $sponsorship->price);
+            return redirect()->route('admin.doctors.index')->with('message', 'La sponsorizzazione è avvenuta con successo');
         } else {
             // Se la transazione fallisce, reindirizza l'utente indietro con un messaggio di errore
             return redirect()->back()->with('error', 'Error: ' . $result->message);
