@@ -49,11 +49,26 @@
                     <p><strong>Data:</strong> {{ $reviews->created_at->format('d-m-Y H:i') }}</p>
                     <p><strong>Recensione:</strong> {{ $reviews->review }}</p>
                 </div>
-            @else
-            <h2 class="text-center mb-4 text-light">Nessuna recensione presente</h2>
-            @endif
+                @else
+                <h2 class="text-center mb-4 text-light">Nessuna recensione presente</h2>
+                @endif
             </div>
         </div>
+        {{-- Visualizza le sponsorizzazioni attive --}}
+        <h2>Sponsorizzazioni Attive</h2>
+        @if ($activeSponsorships->isEmpty())
+        <p>Non hai sponsorizzazioni attive.</p>
+        @else
+        <ul>
+            @foreach ($activeSponsorships as $sponsorship)
+            <li>
+                Sponsorizzazione ID: {{ $sponsorship->id }} <br>
+                Inizio: {{ $sponsorship->pivot->start_date }} <br>
+                Fine: {{ $sponsorship->pivot->end_date }}
+            </li>
+            @endforeach
+        </ul>
+        @endif
     </div>
 </div>
 @endsection
