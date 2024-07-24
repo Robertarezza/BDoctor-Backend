@@ -27,7 +27,7 @@
                 {{-- SPECIALIZATIONS --}}
                 <div class="mb-3">
                     <label for="specialization" class="form-label text-info">Specializzazioni *</label>
-                    <select name="specialization[]" id="specialization" class="form-select @error('specialization') is-invalid @enderror" multiple>
+                    <select name="specialization[]" id="specialization" class="form-select @error('specialization') is-invalid @enderror d-none" multiple>
                         @foreach ($specializations as $specialization)
                         <option @selected(in_array($specialization->id, old('specialization', $doctor->specializations->pluck('id')->toArray()))) value="{{ $specialization->id }}">
                             {{ $specialization->title }}
@@ -90,7 +90,7 @@
                 </div>
                 {{-- /CV --}}
 
-                <button type="submit" class="btn btn-primary w-100">Salva</button>
+                <button type="submit" class="btn btn-primary ">Salva</button>
             </form>
             {{-- /FORM --}}
             @else
