@@ -27,7 +27,7 @@ class DoctorController extends Controller
         // dd($doctorsArray);
 
         //media voti dottori
-        $averageRating = $doctor->ratings()->avg('rating'); 
+        $averageRating = $doctor->ratings()->avg('rating');
         // Conta il numero totale dei voti
         $totalRatings = $doctor->ratings()->count();
 
