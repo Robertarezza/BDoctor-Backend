@@ -11,7 +11,7 @@ class DoctorController extends Controller
 {
     public function index(Request $request)
     {
-        $doctorsQuery = Doctor::with(['user', 'specializations', 'ratings', 'reviews']);
+        $doctorsQuery = Doctor::with(['user', 'specializations', 'ratings', 'reviews', 'sponsorships']);
 
         if ($request->specialization_id) {
             $doctorsQuery->whereHas('specializations', function ($query) use ($request) {
@@ -19,13 +19,20 @@ class DoctorController extends Controller
             });
         }
 
-       // Recupera tutti i dottori e calcola la media dei voti
-       $doctors = $doctorsQuery->get()->map(function ($doctor) {
-        $averageRating = $doctor->ratings->avg('rating');
-        // Arrotonda al numero intero più vicino
-        $doctor->average_rating = $averageRating ? round($averageRating) : 0;
-        return $doctor;
-    });
+        // Recupera tutti i dottori e calcola la media dei voti
+        $doctors = $doctorsQuery->get()->map(function ($doctor) {
+            $averageRating = $doctor->ratings->avg('rating');
+            // Arrotonda al numero intero più vicino
+            $doctor->average_rating = $averageRating ? round($averageRating) : 0;
+
+            // Filtra le sponsorizzazioni attive
+            $activeSponsorships = $doctor->sponsorships()
+                ->where('end_date', '>=', now())
+                ->get();
+            $doctor->active_sponsorships = $activeSponsorships;
+
+            return $doctor;
+        });
 
         // Filtra i dottori in base alla media dei voti
         if ($request->has('average_rating')) {
@@ -41,9 +48,8 @@ class DoctorController extends Controller
             });
         }
 
-      
         $data = [
-           "results" => $doctors->values() 
+            "results" => $doctors->values()
         ];
 
         return response()->json($data);
@@ -51,16 +57,22 @@ class DoctorController extends Controller
 
     public function show(string $doctor_id)
     {
-        $doctor = Doctor::with(['user', 'specializations', 'ratings', 'reviews'])->find($doctor_id);
+        $doctor = Doctor::with(['user', 'specializations', 'ratings', 'reviews', 'sponsorships'])->find($doctor_id);
 
         if (!$doctor) {
             return response()->json(['message' => 'Doctor not found'], 404);
         }
 
-         // Calcola la media dei voti del dottore
-         $averageRating = $doctor->ratings->avg('rating');
-         // Arrotondamento al numero intero più vicino
-         $doctor->average_rating = $averageRating ? round($averageRating) : 0;
+        // Calcola la media dei voti del dottore
+        $averageRating = $doctor->ratings->avg('rating');
+        // Arrotondamento al numero intero più vicino
+        $doctor->average_rating = $averageRating ? round($averageRating) : 0;
+
+        // Filtra le sponsorizzazioni attive
+        $activeSponsorships = $doctor->sponsorships()
+            ->where('end_date', '>=', now())
+            ->get();
+        $doctor->active_sponsorships = $activeSponsorships;
 
         $data = [
             'results' => $doctor,
