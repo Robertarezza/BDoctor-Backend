@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+{{-- ciao --}}
 
 {{-- CONTAINER --}}
 <div class="container ms-container-index">

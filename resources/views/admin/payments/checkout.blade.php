@@ -21,7 +21,8 @@
         @csrf
         <input type="hidden" name="id" value="{{ $sponsorship->id }}">
         <div id="dropin-container" class="mb-3"></div>
-        <button type="submit" class="btn btn-primary btn-block">Paga</button>
+                  <button type="submit" class="btn btn-primary mt-3">Paga Adesso</button>
+        </form>
     </form>
 
     <script>
