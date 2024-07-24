@@ -1,5 +1,7 @@
 import "./bootstrap";
 import "~resources/scss/app.scss";
+import Chart from 'chart.js/auto';
+
 import.meta.glob(["../img/**"]);
 import * as bootstrap from "bootstrap";
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\Message;
+use App\Models\Rating;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,11 +33,19 @@ class DashboardController extends Controller
         $reviews = Review::where('doctor_id', $user->id)->orderByDesc('created_at')->first();
         $messages = Message::where('doctor_id', $user->id)->orderByDesc('created_at')->first();
 
+ // Recupera le statistiche
+    $reviewsCount = Review::where('doctor_id', $doctor->id)->count();
+     $messagesCount = Message::where('doctor_id', $doctor->id)->count();
+     $ratingsCount = $doctor->ratings()->count();
+
         return view('admin.dashboard', [
             'user' => $user,
             'reviews' => $reviews,
             'messages' => $messages,
-            'activeSponsorship' => $activeSponsorship
+            'activeSponsorship' => $activeSponsorship,
+            'reviewsCount' => $reviewsCount,
+            'messagesCount' => $messagesCount,
+            'ratingsCount' => $ratingsCount,
         ]);
     }
 
