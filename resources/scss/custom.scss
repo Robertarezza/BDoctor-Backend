@@ -53,6 +53,11 @@ body {
     color: #cccccc;
 }
 
+.nav-item .active:hover {
+    color: #b99f9f;
+}
+
+
 // Colore di sfondo e altezza per la sidebar personalizzata
 .custom-sidebar {
     background-color: #003366;
