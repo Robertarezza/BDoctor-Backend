@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([DoctorsTableSeeder::class]);
         $this->call([SpecializationsTableSeeder::class]);
         $this->call([RatingsTableSeeder::class]);
+        $this->call([SponsorshipsTableSeeders::class]);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
