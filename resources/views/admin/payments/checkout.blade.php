@@ -15,6 +15,7 @@
     {{-- form with payment infos --}}
     <form id="checkout-form" action="{{ route('admin.processPayment') }}" method="post" class="w-50 m-auto mt-5">
         @csrf
+        <input type="hidden" name="id" value="{{ $sponsorship->id }}">
         <div id="dropin-container" class=""></div>
         <button type="submit" class="btn btn-primary">Pay</button>
     </form>

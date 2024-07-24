@@ -35,7 +35,8 @@ Route::get('/', function () {
         Route::resource('/messages', MessageController::class);
         Route::resource('reviews', ReviewController::class)->except([ 'store', 'create']);
         // route for the page of checkout
-        Route::get('/checkout', [PaymentsController::class, 'showCheckout'])->name('checkout');
+       
+        Route::get('/checkout/{id}', [PaymentsController::class, 'showCheckout'])->name('checkout');
         // route with method post for the validation of the payment
         Route::post('/process-payment', [PaymentsController::class, 'processPayment'])->name('processPayment');
         Route::resource('/sponsorships', SponsorshipController::class);
