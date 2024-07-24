@@ -17,11 +17,13 @@
     @endif
 
     {{-- form with payment infos --}}
-    <form id="checkout-form" action="{{ route('admin.processPayment') }}" method="post" class="w-50 m-auto mt-5 p-4 border rounded shadow-sm bg-light">
+    <form id="checkout-form" action="{{ route('admin.processPayment') }}" method="post"
+        class="w-50 m-auto mt-5 p-4 border rounded shadow-sm bg-light">
         @csrf
         <input type="hidden" name="id" value="{{ $sponsorship->id }}">
         <div id="dropin-container" class="mb-3"></div>
-        <button type="submit" class="btn btn-primary btn-block">Paga</button>
+        <button type="submit" class="btn btn-primary mt-3">Paga Adesso</button>
+    </form>
     </form>
 
     <script>
@@ -33,11 +35,7 @@
         braintree.dropin.create({
             authorization: clientToken,
             container: '#dropin-container',
-            // translations: {
-            //     "card-number": "Numero di Carta",
-            //     "expiration-date": "Data di Scadenza",
-            //     "cvv": "CVV"
-            // }
+            locale: 'it_IT'
         }, function(createErr, instance) {
             form.addEventListener('submit', function(event) {
                 event.preventDefault();

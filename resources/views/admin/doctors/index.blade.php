@@ -5,7 +5,7 @@
 {{-- CONTAINER --}}
 <div class="container ms-container-index">
     @if (session('message'))
-    <div class="alert alert-success custom-success-message">
+    <div id="success-message" class="alert alert-success custom-success-message">
         {{ session('message') }}
     </div>
     @endif
@@ -118,5 +118,21 @@
 </div>
 @endif
 
+<script>
+
+    // delay per la scomparsa del messaggio 
+    document.addEventListener('DOMContentLoaded', function() {
+        var successMessage = document.getElementById('success-message');
+        if (successMessage) {
+            setTimeout(function() {
+                successMessage.style.transition = 'opacity 0.5s ease';
+                successMessage.style.opacity = '0';
+                setTimeout(function() {
+                    successMessage.remove();
+                }, 500); 
+            }, 3000); 
+        }
+    });
+</script>
 
 @endsection
