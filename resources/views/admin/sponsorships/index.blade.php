@@ -17,7 +17,8 @@
             <div class="col-md-4" id="card-container">
                 <div class="card mb-4 p-5" id="{{ $sponsorship->name }}">
                     <div class="card-body">
-                        <h5 class="card-title text-center border-bottom pb-2">{{ $sponsorship->name }}</h5>
+                        <h5 class="card-title text-center border-bottom pb-2" style="    font-weight: bold;
+    font-size: 37px;">{{ $sponsorship->name }}</h5>
                         <p class="card-text text-center mt-3"><strong>Prezzo:</strong> {{ number_format($sponsorship->price, 2) }} €</p>
                         <p class="card-text text-center"><strong>Durata:</strong> {{ $sponsorship->duration }} ore</p>
                     </div>

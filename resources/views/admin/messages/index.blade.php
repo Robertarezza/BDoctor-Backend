@@ -2,28 +2,34 @@
 
 @section('content')
     <div class="container p-5">
+    <h1 class="text-white">Lista Messaggi ricevuti</h1>
         @if ($messages)
             <div class="row">
                 <table class="table mt-5 table-hover table-custom">
                     <thead>
                         <tr>
-                            <th scope="col">Data</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Cognome</th>
-                            <th scope="col">E-mail</th>
-                            <th scope="col">Messaggio</th>
-                            <th scope="col">Azioni</th>
+                           
+                            <th scope="col" class="text-center align-middle">Nome</th>
+                            <th scope="col" class="text-center align-middle">Cognome</th>
+                            <th scope="col" class="text-center align-middle">E-mail</th>
+                            <th scope="col" class="text-center align-middle">Data</th>
+                            <th scope="col" class="text-center align-middle">Azioni</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($messages as $message)                            
                             <tr>
-                                <th scope="row">{{ \Carbon\Carbon::parse($message->created_at)->format('d-m-Y H:i') }}</th>
-                                <td>{{ $message->guest_name }}</td>
-                                <td>{{ $message->guest_surname }}</td>
-                                <td>{{ $message->guest_mail }}</td>
-                                <td class="ms_text-overflow">{{ $message->message }}</td>
-                                <td><a href="{{ route('admin.messages.show', ['message' => $message->id]) }}" class="btn btn-outline-primary"><i class="fa-solid fa-eye"></i></a></td>
+                                
+                                <td class="text-center align-middle">{{ $message->guest_name }}</td>
+                                <td class="text-center align-middle">{{ $message->guest_surname }}</td>
+                                <td class="text-center align-middle">{{ $message->guest_mail }}</td>
+                                <th class="text-center align-middle">{{ \Carbon\Carbon::parse($message->created_at)->format('d-m-Y H:i') }}</th>
+                                <td class="text-center align-middle">
+                                <div class="d-flex justify-content-center align-items-center gap-2">
+                                    <a href="{{ route('admin.messages.show', ['message' => $message->id]) }}" class="btn btn-outline-info">
+                                        <i class="fa-solid fa-eye"></i></a>
+                                        </div>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
