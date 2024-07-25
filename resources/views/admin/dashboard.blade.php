@@ -92,6 +92,7 @@
             data: {
                 labels: ['Recensioni', 'Messaggi', 'Valutazioni'],
                 datasets: [{
+                    label: 'Riepilogo',
                     data: [{{ $reviewsCount }}, {{ $messagesCount }}, {{ $ratingsCount }}],
                     backgroundColor: [
                         'rgba(75, 192, 192, 0.2)',
@@ -114,11 +115,11 @@
                 },
                 plugins: {
                     legend: {
-                        display: false,
+                        display: true,
                     },
                     title: {
                         display: true,
-                        text: 'Numero di'
+                        text: 'Numero di Messaggi  Recensioni e Valutazioni'
                     }
                 }
             }

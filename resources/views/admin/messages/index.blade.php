@@ -23,8 +23,8 @@
                                 <td class="text-center align-middle">{{ ucfirst(strtolower($message->guest_name)) }}</td>
                                 <td class="text-center align-middle">{{ ucfirst(strtolower($message->guest_surname)) }}</td>
                                 <td class="text-center align-middle">{{ ucfirst(strtolower($message->guest_mail)) }}</td>
-                                <th class="text-center align-middle">
-                                    {{ \Carbon\Carbon::parse($message->created_at)->format('d-m-Y H:i') }}</th>
+                                <td class="text-center align-middle">
+                                    {{ \Carbon\Carbon::parse($message->created_at)->format('d-m-Y H:i') }}</td>
                                 <td class="text-center align-middle">
                                     <div class="d-flex justify-content-center align-items-center gap-2">
                                         <a href="{{ route('admin.messages.show', ['message' => $message->id]) }}"
