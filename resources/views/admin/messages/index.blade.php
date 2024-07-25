@@ -20,9 +20,9 @@
                         @foreach ($messages as $message)
                             <tr>
 
-                                <td class="text-center align-middle">{{ $message->guest_name }}</td>
-                                <td class="text-center align-middle">{{ $message->guest_surname }}</td>
-                                <td class="text-center align-middle">{{ $message->guest_mail }}</td>
+                                <td class="text-center align-middle">{{ ucfirst(strtolower($message->guest_name)) }}</td>
+                                <td class="text-center align-middle">{{ ucfirst(strtolower($message->guest_surname)) }}</td>
+                                <td class="text-center align-middle">{{ ucfirst(strtolower($message->guest_mail)) }}</td>
                                 <th class="text-center align-middle">
                                     {{ \Carbon\Carbon::parse($message->created_at)->format('d-m-Y H:i') }}</th>
                                 <td class="text-center align-middle">

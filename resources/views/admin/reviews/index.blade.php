@@ -22,10 +22,10 @@
                 @foreach ($reviews as $review)
                     <tr>
 
-                        <td scope="col" class="text-center align-middle">{{ $review->guest_name }}</td>
+                        <td scope="col" class="text-center align-middle">{{ ucfirst(strtolower($review->guest_name)) }}</td>
                         <td class="text-center align-middle">{{ $review->guest_mail }}</td>
                         <!-- <td>{{ $review->review }}</td> -->
-                        <td class="text-center align-middle">{{ $review->created_at->format('d-m-Y H:i') }}</td>
+                        <td class="text-center align-middle">{{ ucfirst(strtolower($review->created_at->format('d-m-Y H:i'))) }}</td>
                         <td class="text-center align-middle">
                             <div class="d-flex justify-content-center align-items-center gap-2">
                                 <a href="{{ route('admin.reviews.show', ['review' => $review->id]) }}"
