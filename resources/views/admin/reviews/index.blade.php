@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-5">
-    @if ($messages)
+
         <h1 class="text-white text-center">Lista delle recensioni</h1>
         <table class="table mt-5 table-hover table-custom">
 
@@ -40,6 +40,6 @@
                 @endforeach
             </tbody>
         </table>
-        @endif
+     
         </div>
     @endsection
