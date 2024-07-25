@@ -33,12 +33,12 @@
         <div class="col-sm-12 col-md-8 text-white rounded-5">
             {{-- name --}}
             <div class="text-capitalize fs-2 p-2 ms-info-bg rounded">
-                {{ $user->name }} {{ $user->surname }}
+                {{ ucfirst(strtolower($user->name)) }} {{ ucfirst(strtolower($user->surname)) }}
             </div>
             {{-- performances --}}
             <div class="rounded my-2 p-2 ms-info-bg">
                 <div class="fw-bold">Prestazioni:</div>
-                <div> {{ $doctor->performance }} </div>
+                <div> {{ ucfirst(strtolower($doctor->performance)) }} </div>
             </div>
             {{-- voto --}}
             <div class="rounded my-2 p-2 ms-info-bg">
@@ -47,10 +47,10 @@
                     @if($totalRatings > 0)
                         {{ number_format($averageRating) }} / 5  su {{ $totalRatings }} voti
                     @else
-                        nessun voto presente
+                        Nessun voto presente
                     @endif
                 @else
-                    nessun voto presente
+                    Nessun voto presente
                 @endif
             </div>
             {{-- specializations --}}
@@ -58,12 +58,12 @@
                 <div class="fw-bold">Specializzazioni:</div>
                 @forelse ($doctor->specializations as $specialization)
                 @if ($specialization === $doctor->specializations->last())
-                {{ $specialization->title }}.
+                {{ ucfirst(strtolower($specialization->title)) }}.
                 @else
-                {{ $specialization->title }},
+                {{ ucfirst(strtolower($specialization->title)) }},
                 @endif
                 @empty
-                nessuna specializzazione selezionata
+                Nessuna specializzazione selezionata
                 @endforelse
             </div>
             {{-- phone number --}}
@@ -79,7 +79,7 @@
             {{-- studio address --}}
             <div class="rounded my-2 p-2 ms-info-bg">
                 <div class="fw-bold">Indirizzo:</div>
-                {{ $doctor->studio_address }}
+                {{ ucfirst(strtolower($doctor->studio_address)) }}
             </div>
             {{-- cv --}}
             <div class="rounded my-2 p-2 ms-info-bg">

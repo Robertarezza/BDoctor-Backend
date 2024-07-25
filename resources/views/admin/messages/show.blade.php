@@ -9,9 +9,9 @@
             <hr>
             <h5>Indirizzo mail: <strong>{{ $message->guest_mail }}</strong></h5>
             <hr>
-            <h5 class="card-title">Messaggio: <strong>{{$message->message}}</strong></h5>
+            <h5 class="card-title">Messaggio: <strong>{{ ucfirst(strtolower($message->message)) }}</strong></h5>
             <hr>
-            <h5>Messaggio ricevuto il <strong>{{ $message->created_at->format('d-m-Y H:i') }}</strong></h5>
+            <h5>Messaggio ricevuto il <strong>{{ ucfirst(strtolower($message->created_at->format('d-m-Y H:i'))) }}</strong></h5>
         </div>
     </div>
 </div>
