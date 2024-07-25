@@ -27,6 +27,9 @@ class DoctorController extends Controller
         // dd($doctorsArray);
 
         //media voti dottori
+        if (!$doctor) {
+            return redirect()->route('admin.doctors.create');
+        }
         $averageRating = $doctor->ratings()->avg('rating');
         // Conta il numero totale dei voti
         $totalRatings = $doctor->ratings()->count();
