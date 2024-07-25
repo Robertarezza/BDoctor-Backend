@@ -68,12 +68,12 @@
         <h2 class="text-center mb-4 text-light">Le tue statistiche</h2>
         <div class="container mb-5">
             <div class="row">
-                <div class="col-8">
-                    <div class="p-3 bg-light">
+                <div class="col-9">
+                    <div class="p-3 bg-light" style="height: 300px">
                         <canvas id="myChart" width="400" height="200"></canvas>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <div class="p-3 bg-light h-100">
                         <canvas id="doughnut-chart"></canvas>
                     </div>
@@ -85,45 +85,68 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-        // Dati per il grafico
-        const ctx = document.getElementById('myChart').getContext('2d');
-        const myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Recensioni', 'Messaggi', 'Valutazioni'],
-                datasets: [{
-                    label: 'Riepilogo',
-                    data: [{{ $reviewsCount }}, {{ $messagesCount }}, {{ $ratingsCount }}],
-                    backgroundColor: [
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
+    // Dati per il grafico
+    const monthlyData = @json($monthlyData); // trasformiamo l'array di php in json per renderlo leggibile per js
+
+    // Usiamo map per raggruppare tutti i dati dall'array in base al tipo di dato
+    const labels = monthlyData.map(data => data.month);
+    const reviewsData = monthlyData.map(data => data.reviews);
+    const messagesData = monthlyData.map(data => data.messages);
+    const ratingsData = monthlyData.map(data => data.ratings);
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            // tutti i mesi presi con map
+            labels: labels,
+            datasets: [
+                // dataset 1 con le recensioni
+                {
+                    label: 'Recensioni',
+                    data: reviewsData,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
                 },
-                plugins: {
-                    legend: {
-                        display: true,
-                    },
-                    title: {
-                        display: true,
-                        text: 'Numero di Messaggi  Recensioni e Valutazioni'
-                    }
+                // dataset 2 con i messaggi
+                {
+                    label: 'Messaggi',
+                    data: messagesData,
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                },
+                // dataset 3 con le valutazioni
+                {
+                    label: 'Valutazioni',
+                    data: ratingsData,
+                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: 'Numero di Messaggi, Recensioni e Valutazioni per Mese'
                 }
             }
-        });
+        }
+    });
 
         const doughnutChart = document.getElementById('doughnut-chart').getContext('2d');
         const doughnut = new Chart(doughnutChart,{
