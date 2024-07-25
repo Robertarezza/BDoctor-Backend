@@ -65,8 +65,20 @@
             <h2 class="text-center mb-4 text-light">Nessuna recensione presente</h2>
             @endif
         </div>
-        <div class="bg-light">
-            <canvas id="myChart" width="400" height="200"></canvas>
+        <h2 class="text-center mb-4 text-light">Le tue statistiche</h2>
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-8">
+                    <div class="p-3 bg-light">
+                        <canvas id="myChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="p-3 bg-light h-100">
+                        <canvas id="doughnut-chart"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -81,7 +93,6 @@
             data: {
                 labels: ['Recensioni', 'Messaggi', 'Valutazioni'],
                 datasets: [{
-                    label: 'Numero di',
                     data: [{{ $reviewsCount }}, {{ $messagesCount }}, {{ $ratingsCount }}],
                     backgroundColor: [
                         'rgba(75, 192, 192, 0.2)',
@@ -101,8 +112,55 @@
                     y: {
                         beginAtZero: true
                     }
+                },
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                    title: {
+                        display: true,
+                        text: 'Numero di'
+                    }
                 }
             }
+        });
+
+        const doughnutChart = document.getElementById('doughnut-chart').getContext('2d');
+        const doughnut = new Chart(doughnutChart,{
+            type: 'doughnut',
+            data: {
+                labels: {{ json_encode($ratingLabels) }},
+                datasets: [{
+                    data: {{ json_encode($ratingCounts) }},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },            
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Valutazioni per stelle'
+                    }
+                }
+            },
         });
     </script>
 

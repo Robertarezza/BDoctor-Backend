@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\Message;
@@ -37,16 +38,22 @@ class DashboardController extends Controller
     $reviewsCount = Review::where('doctor_id', $doctor->id)->count();
      $messagesCount = Message::where('doctor_id', $doctor->id)->count();
      $ratingsCount = $doctor->ratings()->count();
+    $ratingByStars = $doctor->ratings()->select(DB::raw('rating_id, COUNT(*) as count'))->groupBy('rating_id')->orderBy('rating_id', 'asc')->pluck('count', 'rating_id');
 
-        return view('admin.dashboard', [
-            'user' => $user,
-            'reviews' => $reviews,
-            'messages' => $messages,
-            'activeSponsorship' => $activeSponsorship,
-            'reviewsCount' => $reviewsCount,
-            'messagesCount' => $messagesCount,
-            'ratingsCount' => $ratingsCount,
-        ]);
-    }
+    // Divisione dati 
+    $ratingLabels = $ratingByStars->keys()->toArray(); // array con rating_id
+    $ratingCounts = $ratingByStars->values()->toArray(); // array con i conteggi
+
+    return view('admin.dashboard', [
+    'user' => $user,
+    'reviews' => $reviews,
+    'messages' => $messages,
+    'activeSponsorship' => $activeSponsorship,
+    'reviewsCount' => $reviewsCount,
+    'messagesCount' => $messagesCount,
+    'ratingsCount' => $ratingsCount,
+    'ratingLabels' => $ratingLabels,
+    'ratingCounts' => $ratingCounts,
+    ]);    }
 
 }
