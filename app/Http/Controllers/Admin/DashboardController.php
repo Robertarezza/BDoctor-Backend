@@ -19,9 +19,9 @@ class DashboardController extends Controller
         $doctor = Doctor::where('user_id', $user->id)->first();
 
         // Verifica se il dottore esiste
-        if (!$doctor) {
-            return redirect()->route('admin.dashboard')->with('error', 'Dottore non trovato.');
-        }
+         if (!$doctor) {
+             return redirect()->route('admin.doctors.create')->with('error', 'Dottore non trovato.');
+         }
 
       // Recupera la sponsorizzazione attiva con la data di fine più lontana
       $activeSponsorship = $doctor->sponsorships()
