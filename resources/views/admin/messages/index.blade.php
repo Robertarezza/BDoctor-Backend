@@ -3,7 +3,9 @@
 @section('content')
     <div class="container mt-5">
         <h1 class="text-white text-center">Lista Messaggi ricevuti</h1>
-   
+   @if ($messages)
+       
+ 
             <div class="row">
                 <table class="table mt-5 table-hover table-custom">
                     <thead>
@@ -36,6 +38,8 @@
                         @endforeach
                     </tbody>
                 </table>
+                @endif
+                <p class="text-center text-light">Nessun messaggio ricevuto</p>
             </div>
       
     </div>

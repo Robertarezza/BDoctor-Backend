@@ -5,11 +5,10 @@
 
         <h1 class="text-white text-center">Lista delle recensioni</h1>
         <table class="table mt-5 table-hover table-custom">
-
+        @if ($reviews)
             <thead>
 
                 <tr>
-
                     <th scope="col" class="text-center align-middle">Nome</th>
                     <th scope="col" class="text-center align-middle">Email</th>
                     <!-- <th scope="col">Messaggio</th> -->
@@ -20,9 +19,10 @@
 
             </thead>
             <tbody>
+              
+                    
                 @foreach ($reviews as $review)
                     <tr>
-
                         <td scope="col" class="text-center align-middle">{{ ucfirst(strtolower($review->guest_name)) }}</td>
                         <td class="text-center align-middle">{{ $review->guest_mail }}</td>
                         <!-- <td>{{ $review->review }}</td> -->
@@ -35,11 +35,15 @@
                                 </a>
                             </div>
                         </td>
-
                     </tr>
                 @endforeach
+                @endif
+                
+                   
             </tbody>
         </table>
-     
+       
+                <p class="text-center text-light">Nessuna recensione ricevuta</p>
+             
         </div>
     @endsection
