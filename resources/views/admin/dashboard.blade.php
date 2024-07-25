@@ -84,6 +84,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 <script>
     // Dati per il grafico
     const monthlyData = @json($monthlyData); // trasformiamo l'array di php in json per renderlo leggibile per js
@@ -148,43 +149,52 @@
         }
     });
 
-        const doughnutChart = document.getElementById('doughnut-chart').getContext('2d');
-        const doughnut = new Chart(doughnutChart,{
-            type: 'doughnut',
-            data: {
-                labels: {{ json_encode($ratingLabels) }},
-                datasets: [{
-                    data: {{ json_encode($ratingCounts) }},
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },            
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
+    const doughnutChart = document.getElementById('doughnut-chart').getContext('2d');
+    const doughnut = new Chart(doughnutChart, {
+        type: 'doughnut',
+        data: {
+            labels: {{ json_encode($ratingLabels) }},
+            datasets: [{
+                data: {{ json_encode($ratingCounts) }},
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Valutazioni per stelle'
+                },
+                datalabels: {
+                    formatter: (value, context) => {
+                        const total = context.chart.data.datasets[0].data.reduce((sum, value) => sum + value, 0);
+                        const percentage = (value / total * 100).toFixed(1) + '%';
+                        return percentage;
                     },
-                    title: {
-                        display: true,
-                        text: 'Valutazioni per stelle'
-                    }
+                    color: 'black',
                 }
-            },
-        });
-    </script>
+            }
+        },
+        plugins: [ChartDataLabels]
+    });
+</script>
 
 @endsection
