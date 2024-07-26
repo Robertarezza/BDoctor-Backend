@@ -4,17 +4,19 @@
 <div class="container mt-5">
     <h1 class="text-center text-light">Dettaglio della recensione</h1>
 
-    <div class="card card-review mt-3 shadow-sm" style="width: 100%;">
+    <div class="card card-review mt-3 shadow-sm" style="width: 80%; margin: 0 auto;">
         <div class="card-body">
-        <h5 class=" text-capitalize mt-3">Nome: <span class="fw-bold">{{ ucfirst(strtolower($review->guest_name)) }}</span></h5>
-        <hr>
-        <h5>Indirizzo mail: <strong>{{ $review->guest_mail }}</strong></h5>
-        <hr>
-        <h5 class="card-title">Recensione: <strong>{{$review->review}}</strong></h5>
-        <p class="card-text"></p>
-        <hr>
-        <h5>Recensione ricevuta il <strong>{{ $review->created_at->format('d-m-Y H:i') }}</strong></h5>
             
+        <div class="card-body">
+              <div class="d-flex border-bottom justify-content-between align-items-center">
+                <h5 class="card-title my_name"> <i class="fa-solid fa-circle-user"></i> {{ $review->guest_name }}</h5>
+                <span class="text-secondary" style="font-size: 12px;">  {{ ucfirst(strtolower($review->created_at->format('d-m-Y H:i'))) }}</span>
+              </div>
+              <p>Da: {{$review->guest_mail}}</p>
+              <h6>Ha recensito</h6>
+              <p class="card-text">
+                "{{ $review->review }}".
+              </p>
         </div>
     </div>
 </div>

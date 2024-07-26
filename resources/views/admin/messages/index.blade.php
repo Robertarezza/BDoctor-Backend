@@ -38,9 +38,11 @@
                         @endforeach
                     </tbody>
                 </table>
-                @endif
+                @else
                 <p class="text-center text-light">Nessun messaggio ricevuto</p>
             </div>
-      
+           
+            @endif
+        
     </div>
 @endsection

@@ -36,7 +36,7 @@
             <h2 class="text-center mb-4 text-light">L'ultimo messaggio ricevuto</h2>
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h3 class="card-title">{{ ucwords(strtolower($messages->guest_name)) }} {{ ucwords(strtolower($messages->guest_surname)) }}</h3>
+                    <h3 class="card-title"> <i class="fa-solid fa-circle-user"></i> {{ ucwords(strtolower($messages->guest_name)) }} {{ ucwords(strtolower($messages->guest_surname)) }}</h3>
                     <p class="card-text">Email: {{ $messages->guest_mail }}</p>
                     <hr>
                     <p><strong>Data:</strong> {{ \Carbon\Carbon::parse($messages->created_at)->format('d-m-Y H:i') }}</p>
@@ -54,7 +54,7 @@
             <h2 class="text-center mb-4 text-light">La tua ultima recensione</h2>
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h3 class="card-title">{{ ucwords(strtolower($reviews->guest_name)) }}</h3>
+                    <h3 class="card-title"> <i class="fa-solid fa-circle-user"></i> {{ ucwords(strtolower($reviews->guest_name)) }}</h3>
                     <p class="card-text">Email: {{ $reviews->guest_mail }}</p>
                     <hr>
                     <p><strong>Data:</strong> {{ $reviews->created_at->format('d-m-Y H:i') }}</p>

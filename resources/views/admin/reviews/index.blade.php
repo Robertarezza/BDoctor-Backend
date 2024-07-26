@@ -37,13 +37,13 @@
                         </td>
                     </tr>
                 @endforeach
-                @endif
+               
                 
                    
             </tbody>
         </table>
-       
+       @else
                 <p class="text-center text-light">Nessuna recensione ricevuta</p>
-             
+                @endif
         </div>
     @endsection
