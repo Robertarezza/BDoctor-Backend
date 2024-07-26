@@ -12,7 +12,7 @@
               <p class="mt-0">Da: {{$message->guest_mail}}</p>
               <h6>Ha scritto</h6>
               <p class="card-text">
-                "{{ $message->review }}".
+                "{{ $message->message }}".
               </p>
         </div>
     </div>
