@@ -7,7 +7,7 @@
                 {{-- <h3 class="card-header">{{ __('Login') }}</h3> --}}
 
                 <div class="card-body form">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('login') }}" autocomplete="off">
                         @csrf
 
                         <div class="mb-4 row justify-content-evenly align-items-center">

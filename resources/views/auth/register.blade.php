@@ -8,7 +8,7 @@
                 {{-- <div class="card-header">{{ __('Register') }}</div> --}}
 
                 <div class="card-body d-flex align-items-center flex-column">
-                    <form method="POST" action="{{ route('register') }}" class="pt-5 px-3">
+                    <form method="POST" action="{{ route('register') }}" class="pt-5 px-3" autocomplete="off">
                         @csrf
 
                         <div class="mb-4 row d-flex justify-content-center">
